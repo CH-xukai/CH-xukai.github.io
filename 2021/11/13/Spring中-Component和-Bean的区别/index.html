@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="[明明如月学长](https:&#x2F;&#x2F;blog.csdn.net&#x2F;w605283073) [(26条消息) @Component 和 @Bean 的区别_明明如月的技术博客-CSDN博客](https:&#x2F;&#x2F;blog.csdn.net&#x2F;w605283073&#x2F;article&#x2F;details&#x2F;89221522) @Component 和 @Bean 的区别  两者的联系和区别@Component 和 @Be">
+  <meta name="description" content="两者的联系和区别@Component 和 @Bean 是两种使用注解来定义bean的方式。 @Component（和@Service和@Repository）用于自动检测和使用类路径扫描自动配置bean。注释类和bean之间存在隐式的一对一映射（即每个类一个bean）。 这种方法对需要进行逻辑处理的控制非常有限，因为它纯粹是声明性的。 @Bean用于显式声明单个bean，而不是让Spring像上面">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring中@Component和@Bean的区别">
 <meta property="og:url" content="http://example.com/2021/11/13/Spring%E4%B8%AD-Component%E5%92%8C-Bean%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="jb">
-<meta property="og:description" content="[明明如月学长](https:&#x2F;&#x2F;blog.csdn.net&#x2F;w605283073) [(26条消息) @Component 和 @Bean 的区别_明明如月的技术博客-CSDN博客](https:&#x2F;&#x2F;blog.csdn.net&#x2F;w605283073&#x2F;article&#x2F;details&#x2F;89221522) @Component 和 @Bean 的区别  两者的联系和区别@Component 和 @Be">
+<meta property="og:description" content="两者的联系和区别@Component 和 @Bean 是两种使用注解来定义bean的方式。 @Component（和@Service和@Repository）用于自动检测和使用类路径扫描自动配置bean。注释类和bean之间存在隐式的一对一映射（即每个类一个bean）。 这种方法对需要进行逻辑处理的控制非常有限，因为它纯粹是声明性的。 @Bean用于显式声明单个bean，而不是让Spring像上面">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-11-13T02:04:54.000Z">
-<meta property="article:modified_time" content="2021-11-13T02:25:51.411Z">
+<meta property="article:modified_time" content="2021-11-13T02:28:49.407Z">
 <meta property="article:author" content="Kevin">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="spring">
@@ -87,7 +87,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Navigationsleiste an/ausschalten">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -116,12 +116,12 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Startseite</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archiv</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
 
   </li>
   </ul>
@@ -173,16 +173,16 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">نُشر في</span>
               
 
-              <time title="Erstellt: 2021-11-13 10:04:54 / Geändert am: 10:25:51" itemprop="dateCreated datePublished" datetime="2021-11-13T10:04:54+08:00">2021-11-13</time>
+              <time title="أُنشأ: 2021-11-13 10:04:54 / عُدل: 10:28:49" itemprop="dateCreated datePublished" datetime="2021-11-13T10:04:54+08:00">2021-11-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">في</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
                 </span>
@@ -199,9 +199,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote><footer><strong>[明明如月学长](https://blog.csdn.net/w605283073) [(26条消息) @Component 和 @Bean 的区别_明明如月的技术博客-CSDN博客](https://blog.csdn.net/w605283073/article/details/89221522) @Component 和 @Bean 的区别</strong></footer></blockquote>
-
-<h5 id="两者的联系和区别"><a href="#两者的联系和区别" class="headerlink" title="两者的联系和区别"></a>两者的联系和区别</h5><p>@Component 和 @Bean 是两种使用注解来定义bean的方式。</p>
+        <h5 id="两者的联系和区别"><a href="#两者的联系和区别" class="headerlink" title="两者的联系和区别"></a>两者的联系和区别</h5><p>@Component 和 @Bean 是两种使用注解来定义bean的方式。</p>
 <p>@Component（和@Service和@Repository）用于自动检测和使用类路径扫描自动配置bean。注释类和bean之间存在隐式的一对一映射（即每个类一个bean）。</p>
 <p>这种方法对需要进行逻辑处理的控制非常有限，因为它纯粹是声明性的。</p>
 <p>@Bean用于显式声明单个bean，而不是让Spring像上面那样自动执行它。它将bean的声明与类定义分离，并允许您精确地创建和配置bean。</p>
@@ -294,10 +292,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Inhaltsverzeichnis
+          المحتويات
         </li>
         <li class="sidebar-nav-overview">
-          Übersicht
+          عام
         </li>
       </ul>
 
@@ -318,16 +316,16 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">Artikel</span>
+          <span class="site-state-item-name">المقالات</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">Kategorien</span>
+        <span class="site-state-item-name">التصنيفات</span>
       </div>
       <div class="site-state-item site-state-tags">
         <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">schlagwörter</span>
+        <span class="site-state-item-name">الوسوم</span>
       </div>
   </nav>
 </div>
@@ -359,7 +357,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Kevin</span>
 </div>
-  <div class="powered-by">Erstellt mit  <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
 
         
