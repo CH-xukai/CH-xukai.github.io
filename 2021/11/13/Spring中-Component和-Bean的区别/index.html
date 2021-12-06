@@ -5,25 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/CH-xukai.github.io.git/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/CH-xukai.github.io.git/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/CH-xukai.github.io.git/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/CH-xukai.github.io.git/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/CH-xukai.github.io.git/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/CH-xukai.github.io.git/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"ch-xukai","root":"/CH-xukai.github.io.git/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="引用自：@Component 和 @Bean 的区别 两者的联系和区别@Component 和 @Bean 是两种使用注解来定义bean的方式。 @Component（和@Service和@Repository）用于自动检测和使用类路径扫描自动配置bean。注释类和bean之间存在隐式的一对一映射（即每个类一个bean）。 这种方法对需要进行逻辑处理的控制非常有限，因为它纯粹是声明性的。 @Bea">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring中@Component和@Bean的区别">
-<meta property="og:url" content="https://ch-xukai/CH-xukai.github.io.git/2021/11/13/Spring%E4%B8%AD-Component%E5%92%8C-Bean%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:url" content="http://example.com/2021/11/13/Spring%E4%B8%AD-Component%E5%92%8C-Bean%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content=":)">
 <meta property="og:description" content="引用自：@Component 和 @Bean 的区别 两者的联系和区别@Component 和 @Bean 是两种使用注解来定义bean的方式。 @Component（和@Service和@Repository）用于自动检测和使用类路径扫描自动配置bean。注释类和bean之间存在隐式的一对一映射（即每个类一个bean）。 这种方法对需要进行逻辑处理的控制非常有限，因为它纯粹是声明性的。 @Bea">
 <meta property="og:locale" content="zh_CN">
@@ -36,7 +36,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://z3.ax1x.com/2021/11/13/IsOFJI.png">
 
-<link rel="canonical" href="https://ch-xukai/CH-xukai.github.io.git/2021/11/13/Spring%E4%B8%AD-Component%E5%92%8C-Bean%E7%9A%84%E5%8C%BA%E5%88%AB/">
+<link rel="canonical" href="http://example.com/2021/11/13/Spring%E4%B8%AD-Component%E5%92%8C-Bean%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
 
 <script id="page-configurations">
@@ -98,7 +98,7 @@
 
   <div class="site-meta">
 
-    <a href="/CH-xukai.github.io.git/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">:)</h1>
       <span class="logo-line-after"><i></i></span>
@@ -118,22 +118,22 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/CH-xukai.github.io.git/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/CH-xukai.github.io.git/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/CH-xukai.github.io.git/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/CH-xukai.github.io.git/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1</span></a>
 
   </li>
   </ul>
@@ -167,10 +167,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ch-xukai/CH-xukai.github.io.git/2021/11/13/Spring%E4%B8%AD-Component%E5%92%8C-Bean%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/13/Spring%E4%B8%AD-Component%E5%92%8C-Bean%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/CH-xukai.github.io.git/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Kevin">
       <meta itemprop="description" content="">
     </span>
@@ -199,7 +199,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/CH-xukai.github.io.git/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
                 </span>
             </span>
 
@@ -247,8 +247,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/CH-xukai.github.io.git/tags/java/" rel="tag"># java</a>
-              <a href="/CH-xukai.github.io.git/tags/spring/" rel="tag"># spring</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/spring/" rel="tag"># spring</a>
           </div>
 
         
@@ -319,27 +319,27 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Kevin"
-      src="/CH-xukai.github.io.git/images/avatar.gif">
+      src="/images/avatar.gif">
   <p class="site-author-name" itemprop="name">Kevin</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/CH-xukai.github.io.git/archives/">
+          <a href="/archives/">
         
           <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/CH-xukai.github.io.git/categories/">
+            <a href="/categories/">
           
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/CH-xukai.github.io.git/tags/">
+            <a href="/tags/">
           
         <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
@@ -399,19 +399,19 @@
   </div>
 
   
-  <script src="/CH-xukai.github.io.git/lib/anime.min.js"></script>
-  <script src="/CH-xukai.github.io.git/lib/velocity/velocity.min.js"></script>
-  <script src="/CH-xukai.github.io.git/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/CH-xukai.github.io.git/js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="/CH-xukai.github.io.git/js/motion.js"></script>
-
-
-<script src="/CH-xukai.github.io.git/js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="/CH-xukai.github.io.git/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 
