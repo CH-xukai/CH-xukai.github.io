@@ -115,7 +115,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -125,7 +125,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">42</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">46</span></a>
 
   </li>
   </ul>
@@ -158,7 +158,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/11%E6%A1%86%E6%9E%B6/02SpringFrameWork%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/05%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -172,7 +172,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/01/11/11%E6%A1%86%E6%9E%B6/02SpringFrameWork%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">未命名</a>
+            <a href="/2022/01/11/05%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">方法</a>
         </h2>
 
         <div class="post-meta">
@@ -181,16 +181,19 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-01-11 18:44:04" itemprop="dateCreated datePublished" datetime="2022-01-11T18:44:04+08:00">2022-01-11</time>
+              <time title="创建时间：2022-01-11 00:00:00 / 修改时间：19:48:46" itemprop="dateCreated datePublished" datetime="2022-01-11T00:00:00+08:00">2022-01-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-12 11:20:53" itemprop="dateModified" datetime="2021-12-12T11:20:53+08:00">2021-12-12</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
               </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
 
           
 
@@ -203,35 +206,918 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Spring注解开发"><a href="#Spring注解开发" class="headerlink" title="Spring注解开发"></a>Spring注解开发</h2><p><img src="C:/Users/Kevin/Desktop/image-20211113163632002.png" alt="image-20211113163632002"></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--扫描com.itheima包及其子包下的类中注解--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.itheima&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+          <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>方法（method）是将具有独立功能的代码块组织成为一个整体，使其具有特殊功能的代码集</p>
+<h3 id="定义格式"><a href="#定义格式" class="headerlink" title="定义格式"></a>定义格式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">权限修饰符 修饰符 返回值类型 方法名(方法参数)&#123; 		<span class="comment">//方法名命名约定，小驼峰式： methodName</span></span><br><span class="line">    语句；</span><br><span class="line">    <span class="keyword">return</span> 返回值类型</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p><strong>注意：</strong></p>
+<ol>
+<li><p>方法不能嵌套</p>
+</li>
+<li><p>方法与方法之间没有先后顺序</p>
+</li>
+<li><p>方法不调用不执行</p>
+</li>
+<li><p>void表示这个方法不能有返回值，但是可以有<code>return;</code></p>
+</li>
+<li><p>如果一个方法有返回值类型， 那么这个方法 则必须各个逻辑上，都应该有返回值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">numEqual</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a == b)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;elif(a != b)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*会报错，在数学逻辑上方法内不会再有其他的可能性，不管传进的实参是多少，都会有返回值；</span></span><br><span class="line"><span class="comment">    但是在java虚拟机的机器逻辑中，`if...else if `结构不能保证每次运行都有返回值，所以在结构上来说不能这样书写方法的返回值。</span></span><br><span class="line"><span class="comment">    即：虚拟机不会去看你值的逻辑， 他只看你结构语句的逻辑。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>方法必须先创建才可以使用，该过程称为方法定义</li>
+<li>方法创建后并不是直接可以运行的，需要手动使用后，才执行，该过程称为方法调用</li>
+<li>基本类型的方法返回值可以用比其返回类型更大的类型进行接收，不能用比其小的类型进行接收。</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="方法调用过程图解"><a href="#方法调用过程图解" class="headerlink" title="方法调用过程图解"></a>方法调用过程图解</h3><img src="http://180.76.116.205:8080/images/fangfa2.png">
+
+<hr>
+<h3 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h3><blockquote>
+<p>概念： 同一个类中出现了<strong>方法名相同</strong>,<strong>参数列表必须不同</strong>,<strong>返回值类型无关</strong>，这些方法相互重载。<br>作用： 有了重载之后， 方便程序员的记忆。 减少了负担。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*方法重载:以下几个方法都是重载*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Demo</span><span class="params">()</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Demo</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//3</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Demo</span><span class="params">(<span class="keyword">double</span> a)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//4</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Demo</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//5</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Demo</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//6</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Demo</span><span class="params">(<span class="keyword">byte</span> a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*以下方法不是上线方法的重载*/</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">Demo</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//报错，重载与返回值类型无关！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法的值传递问题"><a href="#方法的值传递问题" class="headerlink" title="方法的值传递问题"></a>方法的值传递问题</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">		System.out.println(a); <span class="comment">// 10</span></span><br><span class="line">		change(a);</span><br><span class="line">		System.out.println(a); <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;   </span><br><span class="line">		a = <span class="number">20</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>下图所示：</p>
+<p>在调用<code>change()</code>方法时，先将main方法中的<code>a</code>赋值给<code>change()</code>中的<code>a</code></p>
+</blockquote>
+<img src="img/image-20210817202547734.png" alt="image-20210817202547734" style="zoom: 67%;" />
+
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">案例<span class="number">1</span>：</span><br><span class="line">			<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo14</span> </span>&#123;</span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">					<span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">					System.out.println(a); <span class="comment">// 10</span></span><br><span class="line">					change(a);</span><br><span class="line">					System.out.println(a); <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;   </span><br><span class="line">					a = <span class="number">20</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		/案例<span class="number">6</span>：</span><br><span class="line">			<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo14</span> </span>&#123;</span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">					<span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">					System.out.println(a); <span class="comment">// 10</span></span><br><span class="line">					a = change(a);</span><br><span class="line">					System.out.println(a); <span class="comment">// 20</span></span><br><span class="line"></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;   </span><br><span class="line">					a = <span class="number">20</span>;</span><br><span class="line">					<span class="keyword">return</span> a;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//案例2：</span></span><br><span class="line">			<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo14</span> </span>&#123;</span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">					<span class="keyword">int</span>[] arr = &#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>&#125;;</span><br><span class="line">					System.out.println(arr[<span class="number">1</span>]); <span class="comment">// 20</span></span><br><span class="line">					change(arr);</span><br><span class="line">					System.out.println(arr[<span class="number">1</span>]); <span class="comment">// 200</span></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;   </span><br><span class="line">					arr[<span class="number">1</span>] = <span class="number">200</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="comment">//案例5：	</span></span><br><span class="line">			<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo14</span> </span>&#123;</span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">					<span class="keyword">int</span>[] arr = &#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>&#125;;  <span class="comment">//0x001</span></span><br><span class="line">					System.out.println(arr[<span class="number">1</span>]); <span class="comment">// 20</span></span><br><span class="line">					arr = change(arr); <span class="comment">// arr = 0x001</span></span><br><span class="line">					System.out.println(arr[<span class="number">1</span>]); <span class="comment">// 200</span></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] change(<span class="keyword">int</span>[] arr)&#123;    <span class="comment">//arr = 0x001</span></span><br><span class="line">					arr[<span class="number">1</span>] = <span class="number">200</span>;</span><br><span class="line">					<span class="keyword">return</span> arr;  <span class="comment">//0x001</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//案例3：</span></span><br><span class="line">			<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo14</span> </span>&#123;</span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">					<span class="keyword">int</span>[] arr = &#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>&#125;;</span><br><span class="line">					System.out.println(arr[<span class="number">1</span>]); <span class="comment">// 20</span></span><br><span class="line">					change(arr);</span><br><span class="line">					System.out.println(arr[<span class="number">1</span>]); <span class="comment">// 20</span></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;   </span><br><span class="line">					arr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">100</span>,<span class="number">200</span>,<span class="number">300</span>&#125;;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="comment">// 只有引用类型 传递到另一个方法里面， 去操作了这个引用类型里面的内容的时候， 才会改变的。</span></span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//案例4：</span></span><br><span class="line">			<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo14</span> </span>&#123;</span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">					<span class="keyword">int</span>[] arr = &#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>&#125;;  <span class="comment">//oo1 </span></span><br><span class="line">					System.out.println(arr[<span class="number">1</span>]); <span class="comment">// 20</span></span><br><span class="line">					arr = change(arr); <span class="comment">// arr=002</span></span><br><span class="line">					System.out.println(arr[<span class="number">1</span>]); <span class="comment">// 200</span></span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] change(<span class="keyword">int</span>[] arr)&#123;   <span class="comment">//001 </span></span><br><span class="line">					arr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">100</span>,<span class="number">200</span>,<span class="number">300</span>&#125;;  <span class="comment">//002</span></span><br><span class="line">					<span class="keyword">return</span> arr; <span class="comment">//002</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125; </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h3><ul>
+<li>基本数据类型的参数，形式参数的改变，不影响实际参数<ul>
+<li>每个方法在栈内存中，都会有独立的栈空间，方法运行结束后就会弹栈消失</li>
+<li><img src="http://180.76.116.205:8080/images/fangfa.png"></li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>对于引用类型的参数，形式参数的改变，影响实际参数的值<ul>
+<li>引用数据类型的传参，传入的是地址值，内存中会造成两个引用指向同一个内存的效果，所以即使方法弹栈，堆内存中的数据也已经是改变后的结果</li>
+<li><img src="http://180.76.116.205:8080/images/fangfa1.png"></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/06%E8%BF%9B%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/06%E8%BF%9B%E5%88%B6/" class="post-title-link" itemprop="url">进制转换</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-11 00:00:00 / 修改时间：19:49:00" itemprop="dateCreated datePublished" datetime="2022-01-11T00:00:00+08:00">2022-01-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h4><h5 id="任意进制到十进制的转换"><a href="#任意进制到十进制的转换" class="headerlink" title="任意进制到十进制的转换"></a>任意进制到十进制的转换</h5><p>公式：系数*基数的权次幂相加</p>
+<ul>
+<li><p>系数：每一【位】上的数</p>
+</li>
+<li><p>奇数：几进制</p>
+</li>
+<li><p>权：从数值的右侧，从0开始，逐个+1</p>
+</li>
+</ul>
+<hr>
+<p><img src="img%5C2497360-20210809202555763-234192259.png" alt="2497360-20210809202555763-234192259"></p>
+<hr>
+<h5 id="十进制到任意进制的转换"><a href="#十进制到任意进制的转换" class="headerlink" title="十进制到任意进制的转换"></a>十进制到任意进制的转换</h5><p>公式：除基取余</p>
+<p>使用源数据，不断地除以基数得到余数，直到商为0，再将余数倒着拼起来。</p>
+<hr>
+<p><img src="img%5C2497360-20210809202743657-1701427271.png" alt="2497360-20210809202743657-1701427271"></p>
+<hr>
+<h5 id="快速进制转换法"><a href="#快速进制转换法" class="headerlink" title="快速进制转换法"></a>快速进制转换法</h5><h6 id="二进制转十进制"><a href="#二进制转十进制" class="headerlink" title="二进制转十进制"></a>二进制转十进制</h6><ul>
+<li>8421码（BCD码Binary-Coded Decimal）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>128</th>
+<th>64</th>
+<th>32</th>
+<th>16</th>
+<th>8</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+</tr>
+</thead>
+</table>
+<p>对应1位相加即可得到十进制</p>
+<h6 id="二进制转八进制"><a href="#二进制转八进制" class="headerlink" title="二进制转八进制"></a>二进制转八进制</h6><p>将三个二进制看作一组，再进行转换</p>
+<p>例：<em><strong>111100</strong></em>：最终转换为八进制结果为<em><strong>74</strong></em></p>
+<hr>
+<p><img src="img%5C2497360-20210809202814168-902219604.png" alt="2497360-20210809202814168-902219604"></p>
+<hr>
+<h6 id="二进制转十六进制"><a href="#二进制转十六进制" class="headerlink" title="二进制转十六进制"></a>二进制转十六进制</h6><p>将四个二进制看作一组，再进行转换</p>
+<p>例：<em><strong>00111100</strong></em>，转换为16进制：<em><strong>0x3C</strong></em></p>
+<hr>
+<p><img src="img%5C2497360-20210809202836067-2076565135.png" alt="2497360-20210809202836067-2076565135"></p>
+<hr>
+<h4 id="二进制的原码、补码、反码"><a href="#二进制的原码、补码、反码" class="headerlink" title="二进制的原码、补码、反码"></a>二进制的原码、补码、反码</h4><h5 id="原码："><a href="#原码：" class="headerlink" title="原码："></a>原码：</h5><p>二进制定点表示法，最高位为符号位，<strong>0</strong>表示正，<strong>1</strong>表示负，其余位表示数值的大小。</p>
+<h5 id="反码："><a href="#反码：" class="headerlink" title="反码："></a>反码：</h5><p>正码的反码与其原码相同；负数的反码是对其原码逐位取反，符号位除外。</p>
+<h5 id="补码："><a href="#补码：" class="headerlink" title="补码："></a>补码：</h5><p>正数的补码与其原码相同；负数的补码是在其反码的末位+1。</p>
+<h5 id="例："><a href="#例：" class="headerlink" title="例："></a>例：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-7</span><br><span class="line">原码：1 0000111</span><br><span class="line">反码：1 1111000</span><br><span class="line">补码：1 1111001</span><br></pre></td></tr></table></figure>
+
+<h4 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h4><p><strong>位运算是对于二进制来说的运算</strong></p>
+<p>0表示false，1表示true</p>
+<ul>
+<li><p>位与：&amp;：全都为true时才为true</p>
+</li>
+<li><p>位或：|：有一个为true时就为true</p>
+</li>
+<li><p>位异或：^：相同为false，不同为true</p>
+</li>
+<li><p>取反：~：全部取反</p>
+</li>
+</ul>
+<h5 id="位移运算符"><a href="#位移运算符" class="headerlink" title="位移运算符"></a>位移运算符</h5><p>&lt;&lt;：有符号左移运算：二进制位向左移动，左边符号位丢弃，右边补齐0。</p>
+<p>向左移动几位，就是乘以2的几次幂</p>
+<p>&gt;&gt;：有符号右移运算：二进制位向右移动，左侧用符号位补齐，右侧最后一位丢弃</p>
+<p>向右移动几位，就是除以2的几次幂</p>
+<p>&gt;&gt;&gt;：无符号右移运算符：无论符号位是正数还是负数，都用0进行补位</p>
+<hr>
+<p><img src="img%5C2497360-20210809202900497-2120599703.png" alt="2497360-20210809202900497-2120599703"></p>
+<hr>
+<p><em><strong>一个数被同一个数异或两次，不会发生变化</strong></em></p>
+<hr>
+<h4 id="二进制设计负数的反码与补码的作用【】"><a href="#二进制设计负数的反码与补码的作用【】" class="headerlink" title="二进制设计负数的反码与补码的作用【】"></a>二进制设计负数的反码与补码的作用【】</h4><p>在二进制进行计算时，将负数的二进制转换成<code>补码</code>方便进行运算。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">例如7 + -7：</span><br><span class="line">7原码： 0000 0111</span><br><span class="line">-7原码：1000 0111</span><br><span class="line">-7反码：1111 1000</span><br><span class="line">-7补码：1111 1001</span><br><span class="line"></span><br><span class="line">进行加运算：</span><br><span class="line">    0000 0111</span><br><span class="line"> +	1111 1001</span><br><span class="line">   10000 0000</span><br><span class="line">   </span><br><span class="line">   最终结果为</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/07%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/07%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">类和对象</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-11 00:00:00 / 修改时间：19:49:14" itemprop="dateCreated datePublished" datetime="2022-01-11T00:00:00+08:00">2022-01-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h3><p>客观存在的事物皆为对象 ，所以我们也常常说万物皆对象。</p>
+<ul>
+<li><p>类</p>
+<ul>
+<li><p>类的理解</p>
+<ul>
+<li>类是对现实生活中一类具有共同属性和行为的事物的抽象</li>
+<li>类是对象的数据类型，类是具有相同属性和行为的一组对象的集合</li>
+<li>简单理解：类就是对现实事物的一种描述</li>
+</ul>
+</li>
+<li><p>类的组成</p>
+<ul>
+<li>属性：指事物的特征，例如：手机事物（品牌，价格，尺寸）</li>
+<li>行为：指事物能执行的操作，例如：手机事物（打电话，发短信）</li>
+</ul>
+</li>
+<li><p>类和对象的关系</p>
+<ul>
+<li>类：类是对现实生活中一类具有共同属性和行为的事物的抽象</li>
+<li>对象：是能够看得到摸的着的真实存在的实体</li>
+<li>简单理解：<strong>类是对事物的一种描述，对象则为具体存在的事物</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>类的定义步骤：</p>
+<p>①定义类</p>
+<p>②编写类的成员变量</p>
+<p>③编写类的成员方法</p>
+</li>
+<li><p>创建对象的格式：</p>
+<ul>
+<li>类名 对象名 = new 类名();</li>
+</ul>
+</li>
+<li><p>调用成员的格式：</p>
+<ul>
+<li>对象名.成员变量</li>
+<li>对象名.成员方法();</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3><h4 id="单个对象内存图"><a href="#单个对象内存图" class="headerlink" title="单个对象内存图"></a>单个对象内存图</h4><h5 id="成员变量使用过程"><a href="#成员变量使用过程" class="headerlink" title="成员变量使用过程"></a>成员变量使用过程</h5><img src="http://180.76.116.205:8080/images/ood_1.png">
+
+<hr>
+<h5 id="成员方法调用过程"><a href="#成员方法调用过程" class="headerlink" title="成员方法调用过程"></a>成员方法调用过程</h5><img src="http://180.76.116.205:8080/images/ood_2.png">
+
+<hr>
+<h4 id="多个对象内存图"><a href="#多个对象内存图" class="headerlink" title="多个对象内存图"></a>多个对象内存图</h4><h5 id="成员变量使用过程-1"><a href="#成员变量使用过程-1" class="headerlink" title="成员变量使用过程"></a>成员变量使用过程</h5><img src="http://180.76.116.205:8080/images/ood_3.png">
+
+<hr>
+<h5 id="成员方法调用过程-1"><a href="#成员方法调用过程-1" class="headerlink" title="成员方法调用过程"></a>成员方法调用过程</h5><img src ="http://180.76.116.205:8080/images/ood_4(1).png">
 
 <ul>
-<li>在类上使用@Component注解定义Bean<ul>
-<li>如果@Component注解没有使用参数指定Bean的名称，那么类名首字母小写就是Bean在IOC容器中的默认名称。例如：BookServiceImpl对象在IOC容器中的名称是bookServiceImpl。</li>
-<li>Spring提供**<code>@Component</code>**注解的三个衍生注解<ul>
-<li>**<code>@Controller</code>**：用于表现层bean定义</li>
-<li>**<code>@Service</code>**：用于业务层bean定义</li>
-<li><code>@Repository</code>：用于数据层bean定义</li>
+<li>多个对象在堆内存中，都有不同的内存划分，成员变量存储在各自的内存区域中，成员方法多个对象共用的一份</li>
+</ul>
+<hr>
+<h4 id="多个对象指向相同内存"><a href="#多个对象指向相同内存" class="headerlink" title="多个对象指向相同内存"></a>多个对象指向相同内存</h4><img src="http://180.76.116.205:8080/images/ood_4.bmp">
+
+<hr>
+<ul>
+<li><p>当多个对象的引用指向同一个内存空间（变量所记录的地址值是一样的）</p>
+<p>只要有任何一个对象修改了内存中的数据，随后，无论使用哪一个对象进行数据获取，都是修改后的数据。</p>
+</li>
+</ul>
+<h3 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h3><h4 id="成员变量和局部变量的区别"><a href="#成员变量和局部变量的区别" class="headerlink" title="成员变量和局部变量的区别"></a>成员变量和局部变量的区别</h4><ul>
+<li>类中位置不同：成员变量（类中方法外）局部变量（方法内部或方法声明上）</li>
+<li>内存中位置不同：成员变量（堆内存）局部变量（栈内存）</li>
+<li>生命周期不同：成员变量（随着对象的存在而存在，随着对象的消失而消失）局部变量（随着方法的调用而存在，随着方法的调用完毕而消失）</li>
+<li>初始化值不同：成员变量（有默认初始化值）局部变量（没有默认初始化值，必须先定义，赋值才能使用）</li>
+</ul>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><h4 id="private"><a href="#private" class="headerlink" title="private"></a>private</h4><p>private是一个修饰符，可以用来修饰成员（成员变量，成员方法）</p>
+<ul>
+<li>被private修饰的成员，只能在本类进行访问，针对private修饰的成员变量，如果需要被其他类使用，提供相应的操作<ul>
+<li>提供“get变量名()”方法，用于获取成员变量的值，方法用public修饰</li>
+<li>提供“set变量名(参数)”方法，用于设置成员变量的值，方法用public修饰</li>
+</ul>
+</li>
+</ul>
+<h4 id="this"><a href="#this" class="headerlink" title="this"></a>this</h4><ul>
+<li>this修饰的变量用于指代成员变量，其主要作用是（区分局部变量和成员变量的重名问题）<ul>
+<li>方法的形参如果与成员变量同名，不带this修饰的变量指的是形参，而不是成员变量</li>
+<li>方法的形参没有与成员变量同名，不带this修饰的变量指的是成员变量</li>
+</ul>
+</li>
+</ul>
+<h5 id="this内存原理"><a href="#this内存原理" class="headerlink" title="this内存原理"></a>this内存原理</h5><ul>
+<li>this代表当前调用方法的引用，哪个对象调用的方法，this就代表哪一个对象</li>
+<li>图解<img src="http://180.76.116.205:8080/images/ood_5.png"></li>
+</ul>
+<h4 id="封装思想"><a href="#封装思想" class="headerlink" title="封装思想"></a>封装思想</h4><ol>
+<li>封装概述 是面向对象三大特征之一（封装，继承，多态） 是面向对象编程语言对客观世界的模拟，客观世界里成员变量都是隐藏在对象内部的，外界是无法直接操作的</li>
+<li>封装原则 将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对隐藏信息的操作和访问 成员变量private，提供对应的getXxx()/setXxx()方法</li>
+<li>封装好处 通过方法来控制成员变量的操作，提高了代码的安全性 把代码用方法进行封装，提高了代码的复用性</li>
+</ol>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>构造方法是一种特殊的方法</p>
+<ul>
+<li><p>作用：在创建对象时初始化对象数据</p>
+</li>
+<li><p>格式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line">	权限修饰符 类名()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>功能：主要是完成对象数据的初始化</p>
+</li>
+</ul>
+<h4 id="构造方法的注意事项"><a href="#构造方法的注意事项" class="headerlink" title="构造方法的注意事项"></a>构造方法的注意事项</h4><ul>
+<li>构造方法的创建</li>
+</ul>
+<p>如果没有定义构造方法，系统将给出一个默认的无参数构造方法 如果定义了构造方法，系统将不再提供默认的构造方法</p>
+<ul>
+<li>构造方法的重载</li>
+</ul>
+<p>如果自定义了带参构造方法，还要使用无参数构造方法，就必须再写一个无参数构造方法</p>
+<ul>
+<li>推荐的使用方式</li>
+</ul>
+<p>无论是否使用，都手工书写无参数构造方法</p>
+<ul>
+<li>重要功能！</li>
+</ul>
+<p>可以使用带参构造，为成员变量进行初始化</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/08API%E3%80%81String%E3%80%81StringBuilder/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/08API%E3%80%81String%E3%80%81StringBuilder/" class="post-title-link" itemprop="url">API</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-11 00:00:00 / 修改时间：19:49:30" itemprop="dateCreated datePublished" datetime="2022-01-11T00:00:00+08:00">2022-01-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="API文档"><a href="#API文档" class="headerlink" title="API文档"></a>API文档</h3><p>用来查看Java核心类库中的类的描述，查询Java类的构造方法和方法。</p>
+<p><code>java.lang</code>下的类不用进行<code>import</code>导包动作。</p>
+<h3 id="’基础‘常用类"><a href="#’基础‘常用类" class="headerlink" title="’基础‘常用类"></a>’基础‘常用类</h3><ul>
+<li><p><code>Scanner</code> :键盘录入，后期用不到</p>
+</li>
+<li><p><code>Random</code> :生成随机数</p>
+</li>
+<li><p><code>String</code> :字符串类</p>
+<ul>
+<li><p>常用的String类方法：</p>
+<ul>
+<li><code>char charAt (int index)</code>：返回指定索引处的char值</li>
+<li><code>boolean equals (object obj)</code>：将此字符串与指定的对象比较（主要用来比较字符串内容）<ul>
+<li>使用<code>==</code>比较的是地址值，使用<code>equals</code>比较的是内容。</li>
+</ul>
+</li>
+<li><code>boolean equalsIgnoreCase</code>：与<code>equals</code>作用一样，但忽略大小写</li>
+<li><code>int indexOf()</code></li>
+<li><code>int length()</code></li>
+<li><code>String replace(要替换的字符序列（字符）,替换后的字符序列（字符）)</code></li>
+<li><code>String[] split(String regex)</code></li>
+<li><code>char[] toCharArray()</code></li>
+</ul>
+</li>
+<li><p><code>String</code>类的拼接原理</p>
+<ul>
+<li>```java<br>String str = “”;<br>str += “a”;<br>//======================<br>实际底层原理：<br>new StringBuilder(str).append(“a”).toString;<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 字符串常量池：</span><br><span class="line"></span><br><span class="line">    - 在堆中，使用`String str = &quot;string&quot;`的方式定义时，`string`会进入字符串常量池，当有另一个字符串常量`String str1 = &#x27;string&#x27;`被赋相同值时，java虚拟机检索堆中字符串常量池存在此值，则会将此String对象同样也指向字符串常量池中的`string`地址，此时两个String对象的地址值相同。</span><br><span class="line"></span><br><span class="line">- `StringBuilder`: 主要用来操作字符串，字符串多次拼接效率比直接用String要高</span><br><span class="line"></span><br><span class="line">  - ```java</span><br><span class="line">    psvm....&#123;</span><br><span class="line">        String str = new String();</span><br><span class="line">    	for(int i = 0; i &lt; 5;i++)&#123;</span><br><span class="line">       	 str += &quot;a&quot;;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    上述代码的拼接过程：</span><br><span class="line">        1.每次拼接前先转成StringBuilder对象=&gt;new StringBuilder(str);</span><br><span class="line">    	2.调用append(...)方法拼接字符串=&gt;new StringBuilder(str).append(&quot;a&quot;);</span><br><span class="line">        3.调用toString()方法转成字符串对象=&gt;new StringBuilder(str).append(&quot;a&quot;).toString();</span><br><span class="line">    	相当于每循环一次都要创建一个StringBuilder对象并调用其方法，完成后使用toString()生成新的String对象赋值给拼接对象</span><br><span class="line">    </span><br><span class="line">    而先将String转成StringBuilder再调用其方法对字符串进行操作，所有的字符拼接操作完成后再转成String对象，可以大大节省在堆内存中反复创建新对象的资源。</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>常用方法</p>
+<ul>
+<li><p><code>StringBuilder append(...)</code>:在调用这个方法之后返回的还是一个<code>StringBuilder</code>对象，因此可以进行链式编程，可以借鉴此思想进行方法构建编程。</p>
+<ul>
+<li>```java<br>StringBuilder sb = new StringBuilder();<br>sb.append(“a”).append(“b”).append…;<br>//因为返回的是StringBuilder对象，因此可以继续调用StringBuilder的方法。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    - 其他方法查api文档吧......</span><br><span class="line"></span><br><span class="line">- `ArrayList`:集合</span><br><span class="line"></span><br><span class="line">  - ```java</span><br><span class="line">    ArrayList&lt;E&gt; al = new ArratList&lt;&gt;()</span><br><span class="line">        /*</span><br><span class="line">        泛型</span><br><span class="line">        以后了解</span><br><span class="line">        */</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><p>方法见API文档，懒得写。。。</p>
+</li>
 </ul>
-<h3 id="纯注解开发"><a href="#纯注解开发" class="headerlink" title="纯注解开发"></a>纯注解开发</h3><p>Spring3.0开启了纯注解开发模式，使用Java类替代配置文件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span> <span class="comment">//用于设定当前类为配置类</span></span><br><span class="line"><span class="meta">@ComponentScan(&#123;service,dao&#125;)</span> <span class="comment">//用于设定扫描路径，此注解只能添加一次，多个数据用数组格式</span></span><br><span class="line"><span class="meta">@PropertySource(&#123;&quot;classpath:jdbc.properties&quot;&#125;)</span> <span class="comment">//加载配置文件</span></span><br><span class="line"><span class="meta">@Import(&#123;JdbcConfig.class&#125;)</span> <span class="comment">//导入其他配置类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringConfig</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载配置文件初始化容器</span></span><br><span class="line">ApplicationContext ctx = <span class="keyword">new</span> AnnotationConfigApplicationContext(SpringConfig.class);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/RabbitMQ%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/RabbitMQ%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">MQ</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-11 00:00:00 / 修改时间：19:50:08" itemprop="dateCreated datePublished" datetime="2022-01-11T00:00:00+08:00">2022-01-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="MQ"><a href="#MQ" class="headerlink" title="MQ"></a>MQ</h1><p><strong>同步通讯</strong></p>
+<p>Feign的调用就属于同步方式，虽然调用可以实时得到结果，但存在下面的问题：</p>
+<p><img src="img/image-20210717162004285.png" alt="image-20210717162004285"></p>
+<p>总结：</p>
+<p>同步调用的优点：</p>
+<ul>
+<li>时效性较强，可以立即得到结果</li>
+</ul>
+<p>同步调用的问题：</p>
+<ul>
+<li>耦合度高</li>
+<li>性能和吞吐能力下降</li>
+<li>有额外的资源消耗</li>
+<li>有级联失败问题</li>
+</ul>
+<p><strong>异步通讯</strong></p>
+<p>异步调用则可以避免上述问题：</p>
+<p>我们以购买商品为例，用户支付后需要调用订单服务完成订单状态修改，调用物流服务，从仓库分配响应的库存并准备发货。</p>
+<p>在事件模式中，支付服务是事件发布者（publisher），在支付完成后只需要发布一个支付成功的事件（event），事件中带上订单id。</p>
+<p>订单服务和物流服务是事件订阅者（Consumer），订阅支付成功的事件，监听到事件后完成自己业务即可。</p>
+<p>为了解除事件发布者与订阅者之间的耦合，两者并不是直接通信，而是有一个中间人（Broker）。发布者发布事件到Broker，不关心谁来订阅事件。订阅者从Broker订阅事件，不关心谁发来的消息。</p>
+<p><img src="img/image-20210422095356088.png" alt="image-20210422095356088"></p>
+<p>Broker 是一个像数据总线一样的东西，所有的服务要接收数据和发送数据都发到这个总线上，这个总线就像协议一样，让服务间的通讯变得标准和可控。</p>
+<p>好处：</p>
+<ul>
+<li><p>吞吐量提升：无需等待订阅者处理完成，响应更快速</p>
+</li>
+<li><p>故障隔离：服务没有直接调用，不存在级联失败问题</p>
+</li>
+<li><p>调用间没有阻塞，不会造成无效的资源占用</p>
+</li>
+<li><p>耦合度极低，每个服务都可以灵活插拔，可替换</p>
+</li>
+<li><p>流量削峰：不管发布事件的流量波动多大，都由Broker接收，订阅者可以按照自己的速度去处理事件</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>架构复杂了，业务没有明显的流程线，不好管理</li>
+<li>需要依赖于Broker的可靠、安全、性能</li>
+</ul>
+<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p><img src="img/image-20211214201821888.png" alt="image-20211214201821888"></p>
+<blockquote>
+<p>RabbitMQ中的一些角色：</p>
+<ul>
+<li>publisher：生产者</li>
+<li>consumer：消费者</li>
+<li>exchange个：交换机，负责消息路由</li>
+<li>queue：队列，存储消息</li>
+<li>virtualHost：虚拟主机，隔离不同租户的exchange、queue、消息的隔离</li>
+</ul>
+</blockquote>
+<h3 id="消息模型"><a href="#消息模型" class="headerlink" title="消息模型"></a>消息模型</h3><p><img src="img/image-20211214201950885.png" alt="image-20211214201950885"></p>
+<hr>
+<h3 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h3><h4 id="简单队列"><a href="#简单队列" class="headerlink" title="简单队列"></a>简单队列</h4><p><strong>模型图</strong></p>
+<p><img src="img/image-20211214202115365.png" alt="image-20211214202115365"></p>
+<hr>
+<blockquote>
+<p>官方的HelloWorld是基于最基础的消息队列模型来实现的，只包括三个角色：</p>
+<ul>
+<li>publisher：消息发布者，将消息发送到队列queue</li>
+<li>queue：消息队列，负责接受并缓存消息</li>
+<li>consumer：订阅队列，处理队列中的消息</li>
+</ul>
+</blockquote>
+<h5 id="publisher实现"><a href="#publisher实现" class="headerlink" title="publisher实现"></a>publisher实现</h5><blockquote>
+<p>流程</p>
+<ul>
+<li>建立连接</li>
+<li>创建Channel</li>
+<li>声明队列</li>
+<li>发送消息</li>
+<li>关闭连接和channel</li>
+</ul>
+</blockquote>
+<p>代码实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.demo.mq.helloworld;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.Channel;</span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.Connection;</span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.ConnectionFactory;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeoutException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PublisherTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSendMessage</span><span class="params">()</span> <span class="keyword">throws</span> IOException, TimeoutException </span>&#123;</span><br><span class="line">        <span class="comment">// 1.建立连接</span></span><br><span class="line">        ConnectionFactory factory = <span class="keyword">new</span> ConnectionFactory();</span><br><span class="line">        <span class="comment">// 1.1.设置连接参数，分别是：主机名、端口号、vhost、用户名、密码</span></span><br><span class="line">        factory.setHost(<span class="string">&quot;192.168.150.101&quot;</span>);</span><br><span class="line">        factory.setPort(<span class="number">5672</span>);</span><br><span class="line">        factory.setVirtualHost(<span class="string">&quot;/&quot;</span>);</span><br><span class="line">        factory.setUsername(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        factory.setPassword(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        <span class="comment">// 1.2.建立连接</span></span><br><span class="line">        Connection connection = factory.newConnection();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.创建通道Channel</span></span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.创建队列</span></span><br><span class="line">        String queueName = <span class="string">&quot;simple.queue&quot;</span>;</span><br><span class="line">        channel.queueDeclare(queueName, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.发送消息</span></span><br><span class="line">        String message = <span class="string">&quot;hello, rabbitmq!&quot;</span>;</span><br><span class="line">        channel.basicPublish(<span class="string">&quot;&quot;</span>, queueName, <span class="keyword">null</span>, message.getBytes());</span><br><span class="line">        System.out.println(<span class="string">&quot;发送消息成功：【&quot;</span> + message + <span class="string">&quot;】&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 5.关闭通道和连接</span></span><br><span class="line">        channel.close();</span><br><span class="line">        connection.close();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="consumer实现"><a href="#consumer实现" class="headerlink" title="consumer实现"></a>consumer实现</h5><blockquote>
+<p>流程</p>
+<ul>
+<li>建立连接</li>
+<li>创建Channel</li>
+<li>声明队列</li>
+<li>订阅消息</li>
+</ul>
+</blockquote>
+<p>代码实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.demo.mq.helloworld;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeoutException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConsumerTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, TimeoutException </span>&#123;</span><br><span class="line">        <span class="comment">// 1.建立连接</span></span><br><span class="line">        ConnectionFactory factory = <span class="keyword">new</span> ConnectionFactory();</span><br><span class="line">        <span class="comment">// 1.1.设置连接参数，分别是：主机名、端口号、vhost、用户名、密码</span></span><br><span class="line">        factory.setHost(<span class="string">&quot;192.168.150.101&quot;</span>);</span><br><span class="line">        factory.setPort(<span class="number">5672</span>);</span><br><span class="line">        factory.setVirtualHost(<span class="string">&quot;/&quot;</span>);</span><br><span class="line">        factory.setUsername(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        factory.setPassword(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        <span class="comment">// 1.2.建立连接</span></span><br><span class="line">        Connection connection = factory.newConnection();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.创建通道Channel</span></span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.创建队列</span></span><br><span class="line">        String queueName = <span class="string">&quot;simple.queue&quot;</span>;</span><br><span class="line">        channel.queueDeclare(queueName, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.订阅消息</span></span><br><span class="line">        channel.basicConsume(queueName, <span class="keyword">true</span>, <span class="keyword">new</span> DefaultConsumer(channel)&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleDelivery</span><span class="params">(String consumerTag, Envelope envelope,</span></span></span><br><span class="line"><span class="params"><span class="function">                                       AMQP.BasicProperties properties, <span class="keyword">byte</span>[] body)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                <span class="comment">// 5.处理消息</span></span><br><span class="line">                String message = <span class="keyword">new</span> String(body);</span><br><span class="line">                System.out.println(<span class="string">&quot;接收到消息：【&quot;</span> + message + <span class="string">&quot;】&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(<span class="string">&quot;等待接收消息。。。。&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="bean作用范围注解配置"><a href="#bean作用范围注解配置" class="headerlink" title="bean作用范围注解配置"></a>bean作用范围注解配置</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scope(&quot;singleton&quot;)</span></span><br></pre></td></tr></table></figure>
+<h3 id="SpringAMQP"><a href="#SpringAMQP" class="headerlink" title="SpringAMQP"></a>SpringAMQP</h3><p>SpringAMQP是基于RabbitMQ封装的一套模板，并且还利用SpringBoot对其实现了自动装配，使用起来非常方便。</p>
+<p>SpringAmqp的官方地址：<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-amqp">https://spring.io/projects/spring-amqp</a></p>
+<blockquote>
+<p>SpringAMQP提供了三个功能：</p>
+<ul>
+<li>自动声明队列、交换机及其绑定关系</li>
+<li>基于注解的监听器模式，异步接收消息</li>
+<li>封装了RabbitTemplate工具，用于发送消息 </li>
+</ul>
+</blockquote>
+<h4 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h4><h5 id="Basic-Queue-简单队列模型"><a href="#Basic-Queue-简单队列模型" class="headerlink" title="Basic Queue 简单队列模型"></a>Basic Queue 简单队列模型</h5><p>在父工程中引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--AMQP依赖，包含RabbitMQ--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="bean生命周期注解配置"><a href="#bean生命周期注解配置" class="headerlink" title="bean生命周期注解配置"></a>bean生命周期注解配置</h4><p>使用<code>@PostConstruct</code>、<code>@PreDestroy</code>定义bean生命周期</p>
-<p>@PostConstruct和@PreDestroy注解是jdk中提供的注解，从jdk9开始，jdk中的javax.annotation包被移除,需要额外导依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.annotation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.annotation-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span> <span class="comment">//依赖注入，自动装配(按类型)</span></span><br><span class="line"><span class="meta">@Qualifier(&quot;dao&quot;)</span> <span class="comment">//自动装配bean时按bean名称装配</span></span><br><span class="line"><span class="meta">@Value(&quot;$&#123;name&#125;&quot;)</span> <span class="comment">//简单类型注入</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="声明队列"><a href="#声明队列" class="headerlink" title="声明队列"></a>声明队列</h6><p>在发送或接受mq消息时首先必须要创建队列，否则没有相应的队列可能会报错，只需要在一端声明即可，但需要注意启动顺序，若服务启动后mq中没有相应的队列也会报错</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.demo.mq.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.core.Queue;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RabbitConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Queue <span class="title">queue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Queue(<span class="string">&quot;simple.queue&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h6 id="消息发送"><a href="#消息发送" class="headerlink" title="消息发送"></a>消息发送</h6><p>配置MQ地址，在publisher服务中的application中添加配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">rabbitmq:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="number">192.168</span><span class="number">.150</span><span class="number">.101</span> <span class="comment"># 主机名</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">5672</span> <span class="comment"># 端口</span></span><br><span class="line">    <span class="attr">virtual-host:</span> <span class="string">/</span> <span class="comment"># 虚拟主机</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">admin</span> <span class="comment"># 用户名</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">admin</span> <span class="comment"># 密码</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>RabbitTemplate</code>实现消息发送</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.demo.mq.spring;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.rabbit.core.RabbitTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringRunner;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringAmqpTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RabbitTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSimpleQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 队列名称</span></span><br><span class="line">        String queueName = <span class="string">&quot;simple.queue&quot;</span>;</span><br><span class="line">        <span class="comment">// 消息</span></span><br><span class="line">        String message = <span class="string">&quot;hello, spring amqp!&quot;</span>;</span><br><span class="line">        <span class="comment">// 发送消息</span></span><br><span class="line">        rabbitTemplate.convertAndSend(queueName, message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="消息接收"><a href="#消息接收" class="headerlink" title="消息接收"></a>消息接收</h6><p>首先配置MQ地址，在consumer服务的application.yml中添加配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">rabbitmq:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="number">192.168</span><span class="number">.150</span><span class="number">.101</span> <span class="comment"># 主机名</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">5672</span> <span class="comment"># 端口</span></span><br><span class="line">    <span class="attr">virtual-host:</span> <span class="string">/</span> <span class="comment"># 虚拟主机</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">itcast</span> <span class="comment"># 用户名</span></span><br><span class="line">    <span class="attr">password:</span> <span class="number">123321</span> <span class="comment"># 密码</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在consumer服务的<code>cn.demo.mq.listener</code>包中新建一个类SpringRabbitListener，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.demo.mq.listener;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringRabbitListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RabbitListener(queues = &quot;simple.queue&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listenSimpleQueueMessage</span><span class="params">(String msg)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;spring 消费者接收到消息：【&quot;</span> + msg + <span class="string">&quot;】&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="WorkQueue"><a href="#WorkQueue" class="headerlink" title="WorkQueue"></a>WorkQueue</h5><p>Work queues，也被称为（Task queues），任务模型。简单来说就是<strong>让多个消费者绑定到一个队列，共同消费队列中的消息</strong>。</p>
+<p><img src="img/image-20211214210223267.png" alt="image-20211214210223267"></p>
+<hr>
+<p>当消息处理比较耗时的时候，可能生产消息的速度会远远大于消息的消费速度。长此以往，消息就会堆积越来越多，无法及时处理。</p>
+<p>此时就可以使用work 模型，多个消费者共同处理消息处理，速度就能大大提高了。</p>
+<h6 id="声明队列-略"><a href="#声明队列-略" class="headerlink" title="声明队列 略"></a>声明队列 略</h6><h6 id="消息发送-1"><a href="#消息发送-1" class="headerlink" title="消息发送"></a>消息发送</h6><p>这次我们循环发送，模拟大量消息堆积现象。</p>
+<p>在publisher服务中的SpringAmqpTest类中添加一个测试方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * workQueue</span></span><br><span class="line"><span class="comment">     * 向队列中不停发送消息，模拟消息堆积。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testWorkQueue</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    <span class="comment">// 队列名称</span></span><br><span class="line">    String queueName = <span class="string">&quot;simple.queue&quot;</span>;</span><br><span class="line">    <span class="comment">// 消息</span></span><br><span class="line">    String message = <span class="string">&quot;hello, message_&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50</span>; i++) &#123;</span><br><span class="line">        <span class="comment">// 发送消息</span></span><br><span class="line">        rabbitTemplate.convertAndSend(queueName, message + i);</span><br><span class="line">        Thread.sleep(<span class="number">20</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="消息接收-1"><a href="#消息接收-1" class="headerlink" title="消息接收"></a>消息接收</h6><p>模拟多个消费者绑定同一个队列，在<code>consumer</code>服务的<code>SpringRabbitListener</code>中添加两个新的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener(queues = &quot;simple.queue&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listenWorkQueue1</span><span class="params">(String msg)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;消费者1接收到消息：【&quot;</span> + msg + <span class="string">&quot;】&quot;</span> + LocalTime.now());</span><br><span class="line">    Thread.sleep(<span class="number">20</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RabbitListener(queues = &quot;simple.queue&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listenWorkQueue2</span><span class="params">(String msg)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    System.err.println(<span class="string">&quot;消费者2........接收到消息：【&quot;</span> + msg + <span class="string">&quot;】&quot;</span> + LocalTime.now());</span><br><span class="line">    Thread.sleep(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h6><p>消息是平均分配给每个消费者，并没有考虑到消费者的处理能力。需要处理。</p>
+<h6 id="处理方案"><a href="#处理方案" class="headerlink" title="处理方案"></a>处理方案</h6><p>使能力大的消费者处理更多的业务。</p>
+<p>在spring中有一个简单的配置，可以解决这个问题。修改<code>consumer</code>服务的<code>application.yml</code>文件，添加配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">rabbitmq:</span></span><br><span class="line">    <span class="attr">listener:</span></span><br><span class="line">      <span class="attr">simple:</span></span><br><span class="line">        <span class="attr">prefetch:</span> <span class="number">1</span> <span class="comment"># 每次只能获取一条消息，处理完成才能获取下一个消息</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="发布-订阅"><a href="#发布-订阅" class="headerlink" title="发布/订阅"></a>发布/订阅</h4><p>发布订阅的模型如图：</p>
+<p><img src="../12RabbitMQ/img/image-20210717165309625.png" alt="image-20210717165309625"></p>
+<p>可以看到，在订阅模型中，多了一个exchange角色，而且过程略有变化：</p>
+<ul>
+<li>Publisher：生产者，也就是要发送消息的程序，但是不再发送到队列中，而是发给exchange（交换机）</li>
+<li>Exchange：交换机，一方面，接收生产者发送的消息。另一方面，知道如何处理消息，例如递交给某个特别队列、递交给所有队列、或是将消息丢弃。到底如何操作，取决于Exchange的类型。Exchange有以下3种类型：<ul>
+<li>Fanout：广播，将消息交给所有绑定到交换机的队列</li>
+<li>Direct：定向，把消息交给符合指定routing key 的队列</li>
+<li>Topic：通配符，把消息交给符合routing pattern（路由模式） 的队列</li>
+</ul>
+</li>
+<li>Consumer：消费者，与以前一样，订阅队列，没有变化</li>
+<li>Queue：消息队列也与以前一样，接收消息、缓存消息。</li>
+</ul>
+<p><strong>Exchange（交换机）只负责转发消息，不具备存储消息的能力</strong>，因此如果没有任何队列与Exchange绑定，或者没有符合路由规则的队列，那么消息会丢失！</p>
+<h4 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h4><h5 id="Fanout"><a href="#Fanout" class="headerlink" title="Fanout"></a>Fanout</h5><p>Fanout，英文翻译是扇出，在MQ中叫广播更合适。</p>
+<p>exchange会将消息路由到每个绑定的队列</p>
+<p><img src="../12RabbitMQ/img/image-20210717165438225.png" alt="image-20210717165438225"></p>
+<p>在广播模式下，消息发送流程是这样的：</p>
+<ul>
+<li>1）  可以有多个队列</li>
+<li>2）  每个队列都要绑定到Exchange（交换机）</li>
+<li>3）  生产者发送的消息，只能发送到交换机，交换机来决定要发给哪个队列，生产者无法决定</li>
+<li>4）  交换机把消息发送给绑定过的所有队列</li>
+<li>5）  <strong>订阅队列的消费者都能拿到消息</strong></li>
+</ul>
+<p><strong>实例</strong></p>
+<ul>
+<li>创建一个交换机 <code>itcast.fanout</code>，类型是<code>Fanout</code></li>
+<li>创建两个队列<code>fanout.queue1</code>和<code>fanout.queue2</code>，绑定到交换机<code>itcast.fanout</code></li>
+</ul>
+<p><img src="../12RabbitMQ/img/image-20210717165509466.png" alt="image-20210717165509466"></p>
+<hr>
+<h6 id="声明队列和交换机"><a href="#声明队列和交换机" class="headerlink" title="声明队列和交换机"></a>声明队列和交换机</h6><p>Spring提供了一个接口Exchange，来表示所有不同类型的交换机：</p>
+<p><img src="../12RabbitMQ/img/image-20210717165552676.png" alt="image-20210717165552676"></p>
+<p>在consumer（消费者）中创建一个类，声明队列和交换机：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.demo.mq.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.core.Binding;</span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.core.BindingBuilder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.core.FanoutExchange;</span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.core.Queue;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FanoutConfig</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 声明交换机</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Fanout类型交换机</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FanoutExchange <span class="title">fanoutExchange</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> FanoutExchange(<span class="string">&quot;itcast.fanout&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 第1个队列</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Queue <span class="title">fanoutQueue1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Queue(<span class="string">&quot;fanout.queue1&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 绑定队列和交换机</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Binding <span class="title">bindingQueue1</span><span class="params">(Queue fanoutQueue1, FanoutExchange fanoutExchange)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BindingBuilder.bind(fanoutQueue1).to(fanoutExchange);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 第2个队列</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Queue <span class="title">fanoutQueue2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Queue(<span class="string">&quot;fanout.queue2&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 绑定队列和交换机</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Binding <span class="title">bindingQueue2</span><span class="params">(Queue fanoutQueue2, FanoutExchange fanoutExchange)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BindingBuilder.bind(fanoutQueue2).to(fanoutExchange);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="消息发送-2"><a href="#消息发送-2" class="headerlink" title="消息发送"></a>消息发送</h6><p>在publisher（发布者）服务的<code>SpringAmqpTest</code>类中添加测试方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFanoutExchange</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 队列名称</span></span><br><span class="line">    String exchangeName = <span class="string">&quot;itcast.fanout&quot;</span>;</span><br><span class="line">    <span class="comment">// 消息</span></span><br><span class="line">    String message = <span class="string">&quot;hello, everyone!&quot;</span>;</span><br><span class="line">    rabbitTemplate.convertAndSend(exchangeName, <span class="string">&quot;&quot;</span>, message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="消息接收-2"><a href="#消息接收-2" class="headerlink" title="消息接收"></a>消息接收</h6><p>在consumer（订阅者）服务的<code>SpringRabbitListener</code>中添加两个方法，作为消费者：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener(queues = &quot;fanout.queue1&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listenFanoutQueue1</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;消费者1接收到Fanout消息：【&quot;</span> + msg + <span class="string">&quot;】&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RabbitListener(queues = &quot;fanout.queue2&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listenFanoutQueue2</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;消费者2接收到Fanout消息：【&quot;</span> + msg + <span class="string">&quot;】&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>交换机的作用</strong></p>
+<ul>
+<li>接收<code>publisher</code>发送的消息</li>
+<li>将消息按照规则路由到与之绑定的队列</li>
+<li>不能缓存消息，路由失败，消息丢失</li>
+<li><code>FanoutExchange</code>的<strong>会将消息路由到每个绑定的队列</strong></li>
+</ul>
+<p><strong>声明队列、交换机、绑定关系的Bean</strong></p>
+<ul>
+<li>Queue</li>
+<li>FanoutExchange</li>
+<li>Binding</li>
+</ul>
+</blockquote>
+<h5 id="Direct"><a href="#Direct" class="headerlink" title="Direct"></a>Direct</h5><p>在<code>Fanout</code>模式中，一条消息，会被<strong>所有</strong>订阅的队列都消费。但是，在某些场景下，我们<strong>希望不同的消息被不同的队列消费。可以用到Direct类型的Exchange。</strong></p>
+<p><img src="../12RabbitMQ/img/image-20210717170041447.png" alt="image-20210717170041447"></p>
+<p> 在<code>Direct</code>模型下：</p>
+<ul>
+<li>队列与交换机的绑定，不能是任意绑定了，而是要指定一个<code>RoutingKey</code>（路由key）</li>
+<li>消息的发送方在 向 <code>Exchange</code>发送消息时，也必须指定消息的 <code>RoutingKey</code>。</li>
+<li><code>Exchange</code><strong>不再把消息交给每一个绑定的队列</strong>，而是根据消息的<code>Routing Key</code>进行判断，只有队列的<code>Routingkey</code>与消息的 <code>Routing key</code>完全一致，才会接收到消息</li>
+</ul>
+<p><strong>案例</strong></p>
+<ol>
+<li><p>利用<code>@RabbitListener</code>声明<code>Exchange</code>、<code>Queue</code>、<code>RoutingKey</code></p>
+</li>
+<li><p>在<code>consumer</code>服务中，编写两个消费者方法，分别监听<code>direct.queue1</code>和<code>direct.queue2</code></p>
+</li>
+<li><p>在<code>publisher</code>中编写测试方法，向<code>itcast. direct</code>发送消息</p>
+</li>
+</ol>
+<p><img src="../12RabbitMQ/img/image-20210717170223317.png" alt="image-20210717170223317"></p>
+<h6 id="基于注解声明队列和交换机"><a href="#基于注解声明队列和交换机" class="headerlink" title="基于注解声明队列和交换机"></a>基于注解声明队列和交换机</h6><p>基于<code>@Bean</code>的方式声明队列和交换机比较麻烦，Spring还提供了基于<strong>注解</strong>方式来声明。</p>
+<p>在<code>consumer</code>的<code>SpringRabbitListener</code>中添加两个消费者，同时基于注解来声明队列和交换机：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener(bindings = @QueueBinding(</span></span><br><span class="line"><span class="meta">    value = @Queue(name = &quot;direct.queue1&quot;),</span></span><br><span class="line"><span class="meta">    exchange = @Exchange(name = &quot;itcast.direct&quot;, type = ExchangeTypes.DIRECT),</span></span><br><span class="line"><span class="meta">    key = &#123;&quot;red&quot;, &quot;blue&quot;&#125;</span></span><br><span class="line"><span class="meta">))</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listenDirectQueue1</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;消费者接收到direct.queue1的消息：【&quot;</span> + msg + <span class="string">&quot;】&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RabbitListener(bindings = @QueueBinding(</span></span><br><span class="line"><span class="meta">    value = @Queue(name = &quot;direct.queue2&quot;),</span></span><br><span class="line"><span class="meta">    exchange = @Exchange(name = &quot;itcast.direct&quot;, type = ExchangeTypes.DIRECT),</span></span><br><span class="line"><span class="meta">    key = &#123;&quot;red&quot;, &quot;yellow&quot;&#125;</span></span><br><span class="line"><span class="meta">))</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listenDirectQueue2</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;消费者接收到direct.queue2的消息：【&quot;</span> + msg + <span class="string">&quot;】&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="消息发送-3"><a href="#消息发送-3" class="headerlink" title="消息发送"></a>消息发送</h6><p>在<code>publisher</code>服务的<code>SpringAmqpTest</code>类中添加测试方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSendDirectExchange</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 交换机名称</span></span><br><span class="line">    String exchangeName = <span class="string">&quot;itcast.direct&quot;</span>;</span><br><span class="line">    <span class="comment">// 消息</span></span><br><span class="line">    String message = <span class="string">&quot;红色警报！日本乱排核废水，导致海洋生物变异，惊现哥斯拉！&quot;</span>;</span><br><span class="line">    <span class="comment">// 发送消息</span></span><br><span class="line">    rabbitTemplate.convertAndSend(exchangeName, <span class="string">&quot;red&quot;</span>, message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p><strong><code>Direct</code>交换机与<code>Fanout</code>交换机的差异</strong></p>
+<ul>
+<li>Fanout交换机将消息路由给每一个与之绑定的队列</li>
+<li>Direct交换机根据RoutingKey判断路由给哪个队列</li>
+<li>如果多个队列具有相同的RoutingKey，则与Fanout功能类似</li>
+</ul>
+<p><strong>基于<code>@RabbitListener</code>注解声明队列和交换机的常见注解</strong></p>
+<ul>
+<li>@Queue</li>
+<li>@Exchange</li>
+</ul>
+</blockquote>
+<h5 id="Topic（通配符）"><a href="#Topic（通配符）" class="headerlink" title="Topic（通配符）"></a>Topic（通配符）</h5><h6 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h6><p><code>Topic</code>类型的<code>Exchange</code>与<code>Direct</code>相比，都是可以根据<code>RoutingKey</code>把消息路由到不同的队列。只不过<code>Topic</code>类型<code>Exchange</code>可以让队列在绑定<code>Routing key</code> 的时候使用<strong>通配符</strong>！</p>
+<p><code>Routingkey</code> 一般都是有一个或多个单词组成，多个单词之间以”.”分割，例如： <code>item.insert</code></p>
+<p> 通配符规则：</p>
+<p><code>#</code>：匹配一个或多个词</p>
+<p><code>*</code>：匹配不多不少恰好1个词</p>
+<p>举例：</p>
+<p><code>item.#</code>：能够匹配<code>item.spu.insert</code> 或者 <code>item.spu</code></p>
+<p><code>item.*</code>：只能匹配<code>item.spu</code></p>
+<p>​     </p>
+<p><strong>图示：</strong></p>
+<hr>
+<p> <img src="../12RabbitMQ/img/image-20210717170705380.png" alt="image-20210717170705380"></p>
+<hr>
+<p><strong>解释：</strong></p>
+<ul>
+<li><code>Queue1</code>：绑定的是<code>china.#</code> ，因此凡是以 <code>china.</code>开头的<code>routing key</code> 都会被匹配到。包括<code>china.news</code>和china.weather</li>
+<li><code>Queue2</code>：绑定的是<code>#.news</code> ，因此凡是以 <code>.news</code>结尾的 <code>routing key</code> 都会被匹配。包括<code>china.news</code>和<code>japan.news</code></li>
+</ul>
+<p><strong>案例</strong></p>
+<p>实现思路如下：</p>
+<ol>
+<li><p>并利用<code>@RabbitListener</code>声明<code>Exchange</code>、<code>Queue</code>、<code>RoutingKey</code></p>
+</li>
+<li><p>在<code>consumer</code>服务中，编写两个消费者方法，分别监听<code>topic.queue1</code>和<code>topic.queue2</code></p>
+</li>
+<li><p>在<code>publisher</code>中编写测试方法，向itcast. topic发送消息</p>
+</li>
+</ol>
+<p><img src="../12RabbitMQ/img/image-20210717170829229.png" alt="image-20210717170829229"></p>
+<h6 id="消息发送-4"><a href="#消息发送-4" class="headerlink" title="消息发送"></a>消息发送</h6><p>在<code>publisher</code>服务的<code>SpringAmqpTest</code>类中添加测试方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * topicExchange</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSendTopicExchange</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 交换机名称</span></span><br><span class="line">    String exchangeName = <span class="string">&quot;itcast.topic&quot;</span>;</span><br><span class="line">    <span class="comment">// 消息</span></span><br><span class="line">    String message = <span class="string">&quot;喜报！孙悟空大战哥斯拉，胜!&quot;</span>;</span><br><span class="line">    <span class="comment">// 发送消息</span></span><br><span class="line">    rabbitTemplate.convertAndSend(exchangeName, <span class="string">&quot;china.news&quot;</span>, message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="消息接收-3"><a href="#消息接收-3" class="headerlink" title="消息接收"></a>消息接收</h6><p>在<code>consumer</code>服务的<code>SpringRabbitListener</code>中添加方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener(bindings = @QueueBinding(</span></span><br><span class="line"><span class="meta">    value = @Queue(name = &quot;topic.queue1&quot;),</span></span><br><span class="line"><span class="meta">    exchange = @Exchange(name = &quot;itcast.topic&quot;, type = ExchangeTypes.TOPIC),</span></span><br><span class="line"><span class="meta">    key = &quot;china.#&quot;</span></span><br><span class="line"><span class="meta">))</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listenTopicQueue1</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;消费者接收到topic.queue1的消息：【&quot;</span> + msg + <span class="string">&quot;】&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RabbitListener(bindings = @QueueBinding(</span></span><br><span class="line"><span class="meta">    value = @Queue(name = &quot;topic.queue2&quot;),</span></span><br><span class="line"><span class="meta">    exchange = @Exchange(name = &quot;itcast.topic&quot;, type = ExchangeTypes.TOPIC),</span></span><br><span class="line"><span class="meta">    key = &quot;#.news&quot;</span></span><br><span class="line"><span class="meta">))</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listenTopicQueue2</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;消费者接收到topic.queue2的消息：【&quot;</span> + msg + <span class="string">&quot;】&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p><code>Direct</code>交换机与<code>Topic</code>交换机的差异</p>
+<ul>
+<li><code>Topic</code>交换机接收的消息<code>RoutingKey</code>必须是多个单词，以 <code>**.**</code> 分割</li>
+<li><code>Topic</code>交换机与队列绑定时的<code>bindingKey</code>可以指定通配符</li>
+<li><code>#</code>：代表0个或多个词</li>
+<li><code>*</code>：代表1个词</li>
+</ul>
+</blockquote>
+<h5 id="消息转换器"><a href="#消息转换器" class="headerlink" title="消息转换器"></a>消息转换器</h5><p>之前说过，Spring会把你发送的消息<strong>序列化</strong>为字节发送给<code>MQ</code>，接收消息的时候，还会把字节<strong>反序列化</strong>为<code>Java</code>对象。</p>
+<p><img src="../12RabbitMQ/img/image-20200525170410401.png" alt="image-20200525170410401"></p>
+<p>只不过，默认情况下Spring采用的序列化方式是<code>JDK</code>序列化。众所周知，<code>JDK</code>序列化存在下列问题：</p>
+<ul>
+<li>数据体积过大</li>
+<li>有安全漏洞</li>
+<li>可读性差</li>
+</ul>
+<h6 id="测试默认转换器"><a href="#测试默认转换器" class="headerlink" title="测试默认转换器"></a>测试默认转换器</h6><p>修改消息发送的代码，发送一个Map对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSendMap</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    <span class="comment">// 准备消息</span></span><br><span class="line">    Map&lt;String,Object&gt; msg = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    msg.put(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;Jack&quot;</span>);</span><br><span class="line">    msg.put(<span class="string">&quot;age&quot;</span>, <span class="number">21</span>);</span><br><span class="line">    <span class="comment">// 发送消息</span></span><br><span class="line">    rabbitTemplate.convertAndSend(<span class="string">&quot;simple.queue&quot;</span>,<span class="string">&quot;&quot;</span>, msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>停止<code>consumer</code>服务</p>
+<p>发送消息后查看控制台：</p>
+<p><img src="../12RabbitMQ/img/image-20210422232835363.png" alt="image-20210422232835363"></p>
+<h6 id="配置JSON转换器"><a href="#配置JSON转换器" class="headerlink" title="配置JSON转换器"></a>配置JSON转换器</h6><p>显然，<code>JDK</code>序列化方式并不合适。我们希望消息体的体积更小、可读性更高，因此可以使用<code>JSON</code>方式来做序列化和反序列化。</p>
+<p>在<code>publisher</code>和<code>consumer</code>两个服务中都引入依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.dataformat<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-dataformat-xml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置消息转换器。</p>
+<p>在启动类中添加一个Bean即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> MessageConverter <span class="title">jsonMessageConverter</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Jackson2JsonMessageConverter();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -412,7 +1298,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -425,7 +1311,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
