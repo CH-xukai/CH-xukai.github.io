@@ -125,7 +125,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">42</span></a>
 
   </li>
   </ul>
@@ -158,7 +158,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/13/Spring%E4%B8%AD-Component%E5%92%8C-Bean%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/09redis/02spring%E9%9B%86%E6%88%90redis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -172,7 +172,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/13/Spring%E4%B8%AD-Component%E5%92%8C-Bean%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">Spring中@Component和@Bean的区别</a>
+            <a href="/2022/01/11/09redis/02spring%E9%9B%86%E6%88%90redis/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -181,19 +181,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-11-13 10:04:54 / 修改时间：16:46:25" itemprop="dateCreated datePublished" datetime="2021-11-13T10:04:54+08:00">2021-11-13</time>
+              <time title="创建时间：2022-01-11 18:44:10" itemprop="dateCreated datePublished" datetime="2022-01-11T18:44:10+08:00">2022-01-11</time>
             </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
                 </span>
-            </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-05 21:04:35" itemprop="dateModified" datetime="2021-12-05T21:04:35+08:00">2021-12-05</time>
+              </span>
 
           
 
@@ -206,30 +203,1526 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><code>引用自：</code><a target="_blank" rel="noopener" href="https://blog.csdn.net/w605283073/article/details/89221522">@Component 和 @Bean 的区别</a></p>
-<h5 id="两者的联系和区别"><a href="#两者的联系和区别" class="headerlink" title="两者的联系和区别"></a>两者的联系和区别</h5><p>@Component 和 @Bean 是两种使用注解来定义bean的方式。</p>
-<p>@Component（和@Service和@Repository）用于自动检测和使用类路径扫描自动配置bean。注释类和bean之间存在隐式的一对一映射（即每个类一个bean）。</p>
-<p>这种方法对需要进行逻辑处理的控制非常有限，因为它纯粹是声明性的。</p>
-<p>@Bean用于显式声明单个bean，而不是让Spring像上面那样自动执行它。它将bean的声明与类定义分离，并允许您精确地创建和配置bean。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> String name = <span class="string">&quot;lkm&quot;</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>而@Bean则常和@Configuration注解搭配使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSocketConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Student <span class="title">student</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Student();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>都可以使用@Autowired或者@Resource注解注入</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">Student student;</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="为什么有了-Compent-还需要-Bean呢？"><a href="#为什么有了-Compent-还需要-Bean呢？" class="headerlink" title="为什么有了@Compent,还需要@Bean呢？"></a>为什么有了@Compent,还需要@Bean呢？</h5><p>如果想将第三方的类变成组件，你又没有没有源代码，也就没办法使用@Component进行自动配置，这种时候使用@Bean就比较合适了。不过同样的也可以通过xml方式来定义。</p>
-<p>另外@Bean注解的方法返回值是对象，可以在方法中为对象设置属性。</p>
+          <h2 id="Spring-Data-Redis"><a href="#Spring-Data-Redis" class="headerlink" title="Spring Data Redis"></a>Spring Data Redis</h2><p>Spring Data Redis 是 Spring 的一部分，提供了在 Spring 应用中通过简单的配置就可以访问 Redis 服务，对 Redis 底层开发包进行了高度封装。在 Spring 项目中，可以使用Spring Data Redis来简化 Redis 操作。</p>
+<p>网址：<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-data-redis">https://spring.io/projects/spring-data-redis</a></p>
 <blockquote>
-<p>另外大家可以了解一下Spring的Starter机制，就是通过@Bean注解来定义bean。</p>
-<p>可以搭配@ConditionalOnMissingBean注解 @ConditionalOnMissingClass注解，如果本项目中没有定义该类型的bean则会生效。</p>
-<p>避免在某个项目中定义或者通过congfig注解来声明大量重复的bean。</p>
+<p>maven坐标：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.data<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Spring Boot提供了对应的Starter，maven坐标：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Spring Data Redis中提供了一个高度封装的类：<strong>RedisTemplate</strong>，针对 Jedis 客户端中大量api进行了归类封装,将同一类型操作封装为operation接口，具体分类如下：</p>
+<ul>
+<li>ValueOperations：简单K-V操作</li>
+<li>SetOperations：set类型数据操作</li>
+<li>ZSetOperations：zset类型数据操作</li>
+<li>HashOperations：针对hash类型的数据操作</li>
+<li>ListOperations：针对list类型的数据操作</li>
+</ul>
 </blockquote>
-<p>Spring常用的xml标签与注解的对应关系：</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/IsOFJI"><img src="https://z3.ax1x.com/2021/11/13/IsOFJI.png" alt="IsOFJI.png"></a></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><p>创建maven项目，配置pom.xml文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.itheima<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springdataredis_demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="配置application-yml"><a href="#配置application-yml" class="headerlink" title="配置application.yml"></a>配置application.yml</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springdataredis_demo</span></span><br><span class="line">  <span class="comment">#Redis相关配置</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">localhost</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">    <span class="comment">#password: 123456</span></span><br><span class="line">    <span class="attr">database:</span> <span class="number">0</span> <span class="comment">#操作的是0号数据库</span></span><br><span class="line">	<span class="comment">#指定使用Redis的哪个数据库，Redis服务启动后默认有16个数据库，编号分别是从0到15。可以通过修改Redis配置文件来指定数据库的数量。</span></span><br><span class="line">    <span class="attr">jedis:</span></span><br><span class="line">      <span class="comment">#Redis连接池配置</span></span><br><span class="line">      <span class="attr">pool:</span></span><br><span class="line">        <span class="attr">max-active:</span> <span class="number">8</span> <span class="comment">#最大连接数</span></span><br><span class="line">        <span class="attr">max-wait:</span> <span class="string">1ms</span> <span class="comment">#连接池最大阻塞等待时间</span></span><br><span class="line">        <span class="attr">max-idle:</span> <span class="number">4</span> <span class="comment">#连接池中的最大空闲连接</span></span><br><span class="line">        <span class="attr">min-idle:</span> <span class="number">0</span> <span class="comment">#连接池中的最小空闲连接</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="配置类"><a href="#配置类" class="headerlink" title="配置类"></a>配置类</h4><blockquote>
+<p>配置redis序列化器，可以避免存到redis中的数据与原数据不一致</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.cache.annotation.CachingConfigurerSupport;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.connection.RedisConnectionFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.core.RedisTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.serializer.StringRedisSerializer;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Redis配置类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisConfig</span> <span class="keyword">extends</span> <span class="title">CachingConfigurerSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RedisTemplate&lt;Object, Object&gt; <span class="title">redisTemplate</span><span class="params">(RedisConnectionFactory connectionFactory)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        RedisTemplate&lt;Object, Object&gt; redisTemplate = <span class="keyword">new</span> RedisTemplate&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//默认的Key序列化器为：JdkSerializationRedisSerializer</span></span><br><span class="line">        redisTemplate.setKeySerializer(<span class="keyword">new</span> StringRedisSerializer());</span><br><span class="line">        redisTemplate.setHashKeySerializer(<span class="keyword">new</span> StringRedisSerializer());</span><br><span class="line"></span><br><span class="line">        redisTemplate.setConnectionFactory(connectionFactory);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> redisTemplate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h4><h5 id="操作字符串类型数据"><a href="#操作字符串类型数据" class="headerlink" title="操作字符串类型数据"></a>操作字符串类型数据</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作String类型数据</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testString</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//存值</span></span><br><span class="line">    redisTemplate.opsForValue().set(<span class="string">&quot;city123&quot;</span>,<span class="string">&quot;beijing&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取值</span></span><br><span class="line">    String value = (String) redisTemplate.opsForValue().get(<span class="string">&quot;city123&quot;</span>);</span><br><span class="line">    System.out.println(value);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存值，同时设置过期时间</span></span><br><span class="line">    redisTemplate.opsForValue().set(<span class="string">&quot;key1&quot;</span>,<span class="string">&quot;value1&quot;</span>,<span class="number">10l</span>, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存值，如果存在则不执行任何操作</span></span><br><span class="line">    Boolean aBoolean = redisTemplate.opsForValue().setIfAbsent(<span class="string">&quot;city1234&quot;</span>, <span class="string">&quot;nanjing&quot;</span>);</span><br><span class="line">    System.out.println(aBoolean);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="操作哈希类型数据"><a href="#操作哈希类型数据" class="headerlink" title="操作哈希类型数据"></a>操作哈希类型数据</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作Hash类型数据</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testHash</span><span class="params">()</span></span>&#123;</span><br><span class="line">    HashOperations hashOperations = redisTemplate.opsForHash();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存值</span></span><br><span class="line">    hashOperations.put(<span class="string">&quot;002&quot;</span>,<span class="string">&quot;name&quot;</span>,<span class="string">&quot;xiaoming&quot;</span>);</span><br><span class="line">    hashOperations.put(<span class="string">&quot;002&quot;</span>,<span class="string">&quot;age&quot;</span>,<span class="string">&quot;20&quot;</span>);</span><br><span class="line">    hashOperations.put(<span class="string">&quot;002&quot;</span>,<span class="string">&quot;address&quot;</span>,<span class="string">&quot;bj&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取值</span></span><br><span class="line">    String age = (String) hashOperations.get(<span class="string">&quot;002&quot;</span>, <span class="string">&quot;age&quot;</span>);</span><br><span class="line">    System.out.println(age);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得hash结构中的所有字段</span></span><br><span class="line">    Set keys = hashOperations.keys(<span class="string">&quot;002&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (Object key : keys) &#123;</span><br><span class="line">        System.out.println(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得hash结构中的所有值</span></span><br><span class="line">    List values = hashOperations.values(<span class="string">&quot;002&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (Object value : values) &#123;</span><br><span class="line">        System.out.println(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="操作列表类型数据"><a href="#操作列表类型数据" class="headerlink" title="操作列表类型数据"></a>操作列表类型数据</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作List类型的数据</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testList</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ListOperations listOperations = redisTemplate.opsForList();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存值</span></span><br><span class="line">    listOperations.leftPush(<span class="string">&quot;mylist&quot;</span>,<span class="string">&quot;a&quot;</span>);</span><br><span class="line">    listOperations.leftPushAll(<span class="string">&quot;mylist&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="string">&quot;d&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取值</span></span><br><span class="line">    List&lt;String&gt; mylist = listOperations.range(<span class="string">&quot;mylist&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (String value : mylist) &#123;</span><br><span class="line">        System.out.println(value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得列表长度 llen</span></span><br><span class="line">    Long size = listOperations.size(<span class="string">&quot;mylist&quot;</span>);</span><br><span class="line">    <span class="keyword">int</span> lSize = size.intValue();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lSize; i++) &#123;</span><br><span class="line">        <span class="comment">//出队列</span></span><br><span class="line">        String element = (String) listOperations.rightPop(<span class="string">&quot;mylist&quot;</span>);</span><br><span class="line">        System.out.println(element);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="操作集合类型数据"><a href="#操作集合类型数据" class="headerlink" title="操作集合类型数据"></a>操作集合类型数据</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作Set类型的数据</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSet</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SetOperations setOperations = redisTemplate.opsForSet();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存值</span></span><br><span class="line">    setOperations.add(<span class="string">&quot;myset&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="string">&quot;a&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取值</span></span><br><span class="line">    Set&lt;String&gt; myset = setOperations.members(<span class="string">&quot;myset&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (String o : myset) &#123;</span><br><span class="line">        System.out.println(o);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除成员</span></span><br><span class="line">    setOperations.remove(<span class="string">&quot;myset&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取值</span></span><br><span class="line">    myset = setOperations.members(<span class="string">&quot;myset&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (String o : myset) &#123;</span><br><span class="line">        System.out.println(o);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="操作有序集合类型数据"><a href="#操作有序集合类型数据" class="headerlink" title="操作有序集合类型数据"></a>操作有序集合类型数据</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作ZSet类型的数据</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testZset</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ZSetOperations zSetOperations = redisTemplate.opsForZSet();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存值</span></span><br><span class="line">    zSetOperations.add(<span class="string">&quot;myZset&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="number">10.0</span>);</span><br><span class="line">    zSetOperations.add(<span class="string">&quot;myZset&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="number">11.0</span>);</span><br><span class="line">    zSetOperations.add(<span class="string">&quot;myZset&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="number">12.0</span>);</span><br><span class="line">    zSetOperations.add(<span class="string">&quot;myZset&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="number">13.0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取值</span></span><br><span class="line">    Set&lt;String&gt; myZset = zSetOperations.range(<span class="string">&quot;myZset&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (String s : myZset) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//修改分数</span></span><br><span class="line">    zSetOperations.incrementScore(<span class="string">&quot;myZset&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="number">20.0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取值</span></span><br><span class="line">    myZset = zSetOperations.range(<span class="string">&quot;myZset&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (String s : myZset) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除成员</span></span><br><span class="line">    zSetOperations.remove(<span class="string">&quot;myZset&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取值</span></span><br><span class="line">    myZset = zSetOperations.range(<span class="string">&quot;myZset&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (String s : myZset) &#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="通用操作"><a href="#通用操作" class="headerlink" title="通用操作"></a>通用操作</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通用操作，针对不同的数据类型都可以操作</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//获取Redis中所有的key</span></span><br><span class="line">    Set&lt;String&gt; keys = redisTemplate.keys(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">        System.out.println(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断某个key是否存在</span></span><br><span class="line">    Boolean itcast = redisTemplate.hasKey(<span class="string">&quot;itcast&quot;</span>);</span><br><span class="line">    System.out.println(itcast);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除指定key</span></span><br><span class="line">    redisTemplate.delete(<span class="string">&quot;myZset&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取指定key对应的value的数据类型</span></span><br><span class="line">    DataType dataType = redisTemplate.type(<span class="string">&quot;myset&quot;</span>);</span><br><span class="line">    System.out.println(dataType.name());</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/07JavaScript/03Jquery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/07JavaScript/03Jquery/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-11 18:44:09" itemprop="dateCreated datePublished" datetime="2022-01-11T18:44:09+08:00">2022-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-02 16:05:26" itemprop="dateModified" datetime="2021-11-02T16:05:26+08:00">2021-11-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h2><p>一款JS函数库，对原生JS进行了封装</p>
+<p>Write less ,Do more</p>
+<p>JQuery重点封装了对于JS中元素查找相关的API。同时还对其他操作进行封装。主要使用了面向对象的思想进行了封装。</p>
+<hr>
+<h3 id="编写流程"><a href="#编写流程" class="headerlink" title="编写流程"></a>编写流程</h3><ol>
+<li>导入jquery的js文件</li>
+<li>通过$函数查找页面元素或者将原生js对象装换为jquery对象</li>
+<li>使用jquery对象进行实际业务操作</li>
+</ol>
+<blockquote>
+<p>JQuery方式获取出来的对象和原生的JS的dom对象并不是同一类型，使用方式也不一样。</p>
+</blockquote>
+<hr>
+<h3 id="JQ对象-gt-JS对象"><a href="#JQ对象-gt-JS对象" class="headerlink" title="JQ对象-&gt;?JS对象"></a>JQ对象-&gt;?JS对象</h3><h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>JQ对象和JS对象不通用，JQ对象不能使用JS的属性和函数，同时JS对象也不能使用JQ对象的属性和函数。JQ对象在使用时，更贴近面向对象的使用方式，JQ对象一般通过调用函数的方式实现功能。而JS对象一般直接使用  <code>对象.属性</code>  方式进行操作。</p>
+<hr>
+<h4 id="互相转换"><a href="#互相转换" class="headerlink" title="互相转换"></a>互相转换</h4><h5 id="JQ对象—-gt-JS对象"><a href="#JQ对象—-gt-JS对象" class="headerlink" title="JQ对象—&gt;JS对象"></a>JQ对象—&gt;JS对象</h5><p>​            此时把JQ对象看成一个JS对象的数组或者集合使用。</p>
+<p>​            <code>JQ对象[索引]</code> 或者<code> JQ对象.get(索引)</code></p>
+<h5 id="JS对象—-gt-JQ对象"><a href="#JS对象—-gt-JQ对象" class="headerlink" title="JS对象—&gt;JQ对象"></a>JS对象—&gt;JQ对象</h5><p>​            通过<code>$()</code>函数，把JS对象传入即可。</p>
+<p>​            <code>let   jq对象</code>  =  <code>$(js对象);</code></p>
+<hr>
+<h3 id="JQ中的事件"><a href="#JQ中的事件" class="headerlink" title="JQ中的事件"></a><p id="jq_事件">JQ中的事件</p></h3><blockquote>
+<p>把js中事件属性的名称中的on去掉，作为函数名使用。通过传参指定要执行的逻辑。</p>
+</blockquote>
+<p><img src="img/image-20211027104326016.png" alt="image-20211027104326016"></p>
+<hr>
+<h4 id="事件的绑定与解绑"><a href="#事件的绑定与解绑" class="headerlink" title="事件的绑定与解绑"></a>事件的绑定与解绑</h4><h5 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h5><p>调用事件的方法时则相当于事件的绑定（<a href="#jq_事件">JQ中的事件绑定</a>），另，JQ提供了另外的绑定方法，两种方式皆可以绑定事件</p>
+<p>JQ中提供的时间绑定方法：</p>
+<p><code>JQ对象.on(事件名称,执行的功能);</code></p>
+<hr>
+<h5 id="解绑"><a href="#解绑" class="headerlink" title="解绑"></a>解绑</h5><p><code>jq对象.off(事件名称);</code></p>
+<p><strong>off中不传参会把指定对象上的所有已绑定事件都解绑。</strong></p>
+<hr>
+<h4 id="事件的切换"><a href="#事件的切换" class="headerlink" title="事件的切换"></a>事件的切换</h4><blockquote>
+<p>需要给同一个对象绑定多个事件，而且多个事件还有先后顺序关系。</p>
+</blockquote>
+<ul>
+<li>单独定义</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(元素).事件方法名<span class="number">1</span>(要执行的功能); </span><br><span class="line">$(元素).事件方法名<span class="number">2</span>(要执行的功能);</span><br><span class="line"> …</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>链式定义</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(元素).事件方法名<span class="number">1</span>(要执行的功能)</span><br><span class="line"> 	.事件方法名<span class="number">2</span>(要执行的功能); </span><br><span class="line">…</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="hover-函数"><a href="#hover-函数" class="headerlink" title="hover()函数"></a>hover()函数</h4><p>模拟了一个鼠标悬停的事件。需要传入两个函数，第一个函数代表鼠标进入及悬停在组件上的时候执行的函数。第二个函数代表鼠标移出执行的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#div&quot;</span>).hover(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="built_in">this</span>).css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;red&quot;</span>);</span><br><span class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="built_in">this</span>).css(<span class="string">&quot;background&quot;</span>,<span class="string">&quot;blue&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><blockquote>
+<p>在jq对象上调用任何函数，都相当于在jq对象对应的所有元素上都调用了这个函数。也就是说，jq对象自带遍历效果。但是这种遍历效果只能用于“设置类”的方法，“获取类”方法不能使用这种方式。</p>
+</blockquote>
+<ol>
+<li>传统方式（js原生语法）</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; 容器对象长度; i++)&#123;</span><br><span class="line">       执行功能; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>对象.each()方法</li>
+</ol>
+<blockquote>
+<p>在函数中，也以使用this关键字获取遍历出的元素。this也是每次遍历出的js元素对象。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器对象.each(<span class="function"><span class="keyword">function</span>(<span class="params">index,ele</span>)</span>&#123; <span class="comment">//index：索引；ele：遍历出来的元素</span></span><br><span class="line">         执行功能; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>$.each()方法</li>
+</ol>
+<blockquote>
+<p>被遍历的容器可以是jq对象也可以是普通的js数组。</p>
+<p>函数中是没有break和continue关键字的，如果在each中需要break或者continue，需要通过函数的返回值控制。如果返回是true，代表continue；如果返回是false，代表break</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.each(容器对象,<span class="function"><span class="keyword">function</span>(<span class="params">index,ele</span>)</span>&#123;</span><br><span class="line">        执行功能;</span><br><span class="line">&#125;); </span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>for of语句 （js原生语法）</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(ele <span class="keyword">of</span> 容器对象)&#123;</span><br><span class="line">         执行功能; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="JQ选择器"><a href="#JQ选择器" class="headerlink" title="JQ选择器"></a>JQ选择器</h3><blockquote>
+<p>类似于CSS的选择器，可以帮助获取元素</p>
+<p>选择器的语法:<code>$()</code></p>
+</blockquote>
+<p>具体用法可参考jQuery文档；下面列举几个典型：</p>
+<h4 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h4><p><img src="img/image-20211027185149729.png" alt="image-20211027185149729"></p>
+<ul>
+<li><code>#id</code>根据id属性选择元素</li>
+<li><code>element</code>根据元素标签选择元素</li>
+<li><code>.class</code>根据元素的class属性选择元素</li>
+<li><code>*</code>选择全部元素，多用于结合上下文来搜索</li>
+<li><code>selector1,selector2,selector3,...</code>将每一个选择器匹配到的元素合并后一起返回。</li>
+</ul>
+<h4 id="层级选择器"><a href="#层级选择器" class="headerlink" title="层级选择器"></a>层级选择器</h4><p><img src="img/image-20211027185205245.png" alt="image-20211027185205245"></p>
+<h4 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h4><p><img src="img/image-20211027185233774.png" alt="image-20211027185233774"></p>
+<p><img src="img/image-20211027185300493.png" alt="image-20211027185300493"></p>
+<h4 id="过滤器选择器"><a href="#过滤器选择器" class="headerlink" title="过滤器选择器"></a>过滤器选择器</h4><blockquote>
+<p>分为以下几种类型：基本、内容、可见性、子元素、表单、表单对象属性</p>
+<p>具体查看文档，以下列举部分：</p>
+</blockquote>
+<p><code>:not(选择器) </code>对选择器进行取反</p>
+<p><strong>基本</strong></p>
+<p><img src="img/image-20211027185329527.png" alt="image-20211027185329527"></p>
+<p><strong>表单对象属性</strong></p>
+<p><img src="img/image-20211027185552888.png" alt="image-20211027185552888"></p>
+<hr>
+<h3 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h3><h4 id="入口函数"><a href="#入口函数" class="headerlink" title="入口函数"></a>入口函数</h4><p>页面加载完成的函数，称为入口函数。即当html的DOM结构加载完成后才会执行JS的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">//此处可以编写页面加载完成后执行的逻辑</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="操作文本"><a href="#操作文本" class="headerlink" title="操作文本"></a>操作文本</h4><p><img src="img/image-20211027185619665.png" alt="image-20211027185619665"></p>
+<p>以上方法相当于js原生语法的<code>innerHtml</code>属性</p>
+<hr>
+<h4 id="操作对象-文档处理"><a href="#操作对象-文档处理" class="headerlink" title="操作对象(文档处理)"></a>操作对象(文档处理)</h4><blockquote>
+<p>理解为操作解析后的DOM树结构<em>？？？</em></p>
+<p>具体翻文档，下面把所有的方法都列出来了</p>
+</blockquote>
+<p><img src="img/image-20211027192008291.png" alt="image-20211027192008291"></p>
+<ul>
+<li><p>内部插入<br><code>append（content|fn）</code></p>
+<blockquote>
+<p> 往元素中添加一个子元素，放到所有元素的最后</p>
+<pre><code>        append的参数，可以直接编写html标签，作为元素使用
+        例如：$(&quot;#div&quot;).append(&quot;&lt;span&gt;test&lt;/span&gt;&quot;);
+</code></pre>
+</blockquote>
+<p><code>appendTo（content）</code><br><code>prepend（content|fn）</code><br><code>prependTo（content）</code></p>
+</li>
+<li><p>外部插入<br><code>after（content|fn）</code><br><code>before（content|fn）</code><br><code>insertAfter（content）</code><br><code>insertBefore（content）</code></p>
+</li>
+<li><p>包裹<br><code>wrap（htmllele|fn）</code><br><code>unwrap（）</code><br><code>wrapAll（html|ele）</code><br><code>wrapInner（htmllele |fn）</code></p>
+</li>
+<li><p>替换<br><code>replace With（content|fn）</code><br><code>replaceAll（selector）</code></p>
+</li>
+<li><p>删除<br><code>empty（）</code>清空所有子元素，调用者不会被删除<br><code>remove（[expr]）</code> 移除自己，无需父元素就可以删除</p>
+<p><code>detach（[expr]）</code></p>
+</li>
+<li><p>复制<br><code>clone（[Even[，deepEven]）</code></p>
+</li>
+</ul>
+<hr>
+<h4 id="操作样式"><a href="#操作样式" class="headerlink" title="操作样式"></a>操作样式</h4><p><img src="img/image-20211027192030978.png" alt="image-20211027192030978"></p>
+<hr>
+<h4 id="操作属性"><a href="#操作属性" class="headerlink" title="操作属性"></a>操作属性</h4><p><img src="img/image-20211027192109516.png" alt="image-20211027192109516"></p>
+<blockquote>
+<p><code>prop()</code>：该方法用于获取一些状态相关的属性，能够把默认的<code>false</code>、<code>true</code>设置上。隐含的属性也能获取。</p>
+<p>一般用于设置一些<strong>固有属性</strong>，**非固有属性推荐使用<code>attr()</code>**。</p>
+<p><em>固有属性</em>：在html规范中，已经约定好了此元素具有的属性。通过查看html文档能够在属性列表中看到的属性才是固有属性。</p>
+</blockquote>
+<hr>
+<h3 id="效果API"><a href="#效果API" class="headerlink" title="效果API"></a>效果API</h3><blockquote>
+<p>使用<code>show()</code>和<code>hide()</code>方法可以使元素显示或隐藏。这两个方法可以传入播放时长携带动画效果。</p>
+</blockquote>
+<p><code>show()</code>:只有元素处于隐藏状态才能调用show显示它<br><code>hide()</code>:只有元素处于显示状态才能调用hide隐藏它</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/06Mybatis/02%E8%BF%9B%E9%98%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/06Mybatis/02%E8%BF%9B%E9%98%B6/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-11 18:44:09" itemprop="dateCreated datePublished" datetime="2022-01-11T18:44:09+08:00">2022-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-06 18:41:53" itemprop="dateModified" datetime="2021-11-06T18:41:53+08:00">2021-11-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="代理DAO"><a href="#代理DAO" class="headerlink" title="代理DAO"></a>代理DAO</h2><p>使用Mybatis动态生成DAO，可以省略DAO实现类的编写，减少代码量</p>
+<h3 id="代理DAO的规则"><a href="#代理DAO的规则" class="headerlink" title="代理DAO的规则"></a>代理DAO的规则</h3><ol>
+<li>映射配置文件的存储位置和名称要和DAO接口保持一致。（包名和文件存储路径一致。类名和映射配置文件名一致）</li>
+<li>映射配置文件中namespace属性的值，和DAO接口的全类名保持一致。</li>
+<li>映射配置中增删改查标签的id，和DAO接口中对应操作的方法名保持一致。</li>
+<li>映射配置中增删改查标签的参数类型和结果类型，和DAO接口中方法的参数类型和返回值类型保持一致。</li>
+</ol>
+<h3 id="获取DAO接口的实现对象"><a href="#获取DAO接口的实现对象" class="headerlink" title="获取DAO接口的实现对象"></a>获取DAO接口的实现对象</h3><p><code>getMapper(Class clazz)</code></p>
+<p><img src="img/image-20211023162739134.png" alt="image-20211023162739134"></p>
+<h3 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h3><p>sql的条件不固定的时候，通过逻辑判断标签进行sql的最终确定。</p>
+<h4 id="where"><a href="#where" class="headerlink" title="where"></a>where</h4><p>此标签可以替代where关键字。</p>
+<ol>
+<li>如果条件都不满足，则where关键字不会出现</li>
+<li>第一个条件sql语句前的and关键字，会自动去除</li>
+</ol>
+<h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><p>通过test属性指定一个布尔类型的表达式，用于判断。判断成功才会把标签体的sql拼接到最终执行的sql上。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;id != null&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h4><p>属性：</p>
+<ul>
+<li><p>collection：用于指定集合类型</p>
+<ul>
+<li>list：用于表示集合类型，固定写法</li>
+<li>array：用于表示数组类型，固定写法</li>
+<li>属性名或者map的key值：用于表示集合在参数的属性位置或者参数为map时的key的名称</li>
+</ul>
+</li>
+<li><p>open：sql语句拼接时开始的字符串</p>
+</li>
+<li><p>close：sql语句拼接时结束的字符串</p>
+</li>
+<li><p>item：遍历集合时，每一次遍历出的值存储的变量名</p>
+</li>
+<li><p>separator：分隔符，各个值之间的分隔符</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- select * from student where id in(1,2,3,4) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;list !=null and list.size() &gt; 0&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;list&quot;</span> <span class="attr">open</span>=<span class="string">&quot;id IN (&quot;</span> <span class="attr">close</span>=<span class="string">&quot;)&quot;</span> <span class="attr">item</span>=<span class="string">&quot;id&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;,&quot;</span>&gt;</span></span><br><span class="line">             #&#123;id&#125;</span><br><span class="line">       <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- insert into xxx values (?,?,?),(?,?,?),(?,?,?) 批量插入的演示--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;batchInsert&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">        insert into student values </span><br><span class="line">        <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;list&quot;</span> <span class="attr">item</span>=<span class="string">&quot;student&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;,&quot;</span>&gt;</span></span><br><span class="line">            (#&#123;student.id&#125;,#&#123;student.name&#125;,#&#123;student.age&#125;)</span><br><span class="line">        <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>MyBatis 允许在映射语句执行过程中的某一点进行拦截调用。增强Mybatis的功能</p>
+<h4 id="分页插件"><a href="#分页插件" class="headerlink" title="分页插件"></a>分页插件</h4><p><code>PageHelper</code></p>
+<p>在mybatis核心配置文件中加入</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;com.github.pagehelper.PageInterceptor&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 设置方言，如果不设置，插件也会自动进行判断</span></span><br><span class="line"><span class="comment">        &lt;property name=&quot;helperDialect&quot; value=&quot;mysql&quot;/&gt; --&gt;</span></span><br><span class="line">         <span class="comment">&lt;!-- 分页合理化参数，设置为true之后，会把分页页码的边界值判断加上，保证查询正确--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;reasonable&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="API的调用"><a href="#API的调用" class="headerlink" title="API的调用"></a>API的调用</h5><p>在查询语句执行之前，先调用分页助手的api进行分页的设置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PageHelper.startPage(页码数，页面大小);</span><br><span class="line"><span class="comment">//查询语句</span></span><br><span class="line">Page&lt;Student&gt; list = studentMapper.selectAll();</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取分页相关参数</span></span><br><span class="line">PageInfo&lt;Student&gt; info = <span class="keyword">new</span> PageInfo&lt;&gt;(list);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol>
+<li>分页设置后紧跟的第一条查询语句会自动进行分页。</li>
+<li>如果分页设置后有两条查询sql语句，仅第一条会分页。后面不会分页。也就是说。该分页设置的api仅会生效一次。</li>
+<li><strong>当使用分页助手之后，查询结果就不再是List集合类型了，而是Page类型。分页插件底层会自动进行替换和封装。Page类型是ArrayList的子类，除了包含集合的功能之外，还加入了分页相关的所有参数的封装。</strong></li>
+<li>可以把Page对象用PageInfo对象进行封装，更利于我们使用分页相关参数</li>
+</ol>
+</blockquote>
+<h3 id="多表操作"><a href="#多表操作" class="headerlink" title="多表操作"></a>多表操作</h3><h4 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h4><ul>
+<li>方法一</li>
+</ul>
+<blockquote>
+<p>resultMap标签：指定结果集和JavaBean的映射关系 type属性：指定对应的avabean类<br>id标签：用于指定主键列和属性的对应关系<br>        column属性：结果集中的列名<br>        property属性：JavaBean中的属性名<br>result标签：用于指定非主键列和属性的对应关系<br>        column属性：结果集中的列名<br>        property属性：JavaBean中的属性名<br>association标签：用于指定一对一中对象中包含的对象的封装<br>        property属性：用于指定对象中包含的引用对象的属性名<br>        javaType属性：用于指定对象中包含的引用对象的类型<br>        id标签<br>        result标签</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.itheima.table01.OneToOneMapper&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;oneToOne&quot;</span> <span class="attr">type</span>=<span class="string">&quot;card&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;number&quot;</span> <span class="attr">property</span>=<span class="string">&quot;number&quot;</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">&quot;p&quot;</span> <span class="attr">javaType</span>=<span class="string">&quot;person&quot;</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;pid&quot;</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span> /&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;pname&quot;</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;age&quot;</span> <span class="attr">property</span>=<span class="string">&quot;age&quot;</span>/&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">     <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectAll&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;oneToOne&quot;</span>&gt;</span></span><br><span class="line">         select c.*,p.name pname,p.age from card c,person p where c.pid = p.id</span><br><span class="line">     <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法二</li>
+</ul>
+<blockquote>
+<p>resultMap标签：指定结果集和JavaBean的映射关系<br>id标签：用于指定主键列和属性的对应关系<br>        column属性：结果集中的列名<br>        property属性：JavaBean中的属性名<br>result标签：用于指定非主键列和属性的对应关系<br>        column属性：结果集中的列名<br>        property属性：JavaBean中的属性名<br>association标签：用于指定一对一中对象中包含的对象的封装<br>        property属性：用于指定对象中包含的引用对象的属性名<br>        javaType属性：用于指定对象中包含的引用对象的类型<br>        select属性：用于指定另一个dao方法，调用该方法查询当前属性的值进行封装<br>        column属性：用于指定结果集中的哪一列的值当作一个参数使用，给select对应的方法传参</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.itheima.table01.OneToOneMapper&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--配置字段和实体对象属性的映射关系--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;oneToOne&quot;</span> <span class="attr">type</span>=<span class="string">&quot;card&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;number&quot;</span> <span class="attr">property</span>=<span class="string">&quot;number&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">&quot;p&quot;</span></span></span><br><span class="line"><span class="tag">                 <span class="attr">javaType</span>=<span class="string">&quot;person&quot;</span></span></span><br><span class="line"><span class="tag">                 <span class="attr">select</span>=<span class="string">&quot;com.itheima.table01.PersonMapper.selectById&quot;</span></span></span><br><span class="line"><span class="tag">                 <span class="attr">column</span>=<span class="string">&quot;pid&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectAll&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;oneToOne&quot;</span>&gt;</span></span><br><span class="line">    select * from card</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.itheima.table01.PersonMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectById&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;Person&quot;</span>&gt;</span></span><br><span class="line">        select * from person where id = #&#123;pid&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="一对多（多对多）"><a href="#一对多（多对多）" class="headerlink" title="一对多（多对多）"></a>一对多（多对多）</h4><ul>
+<li>方法一</li>
+</ul>
+<p>多表连接查询</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.itheima.table02.OneToManyMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;oneToMany&quot;</span> <span class="attr">type</span>=<span class="string">&quot;classes&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;cid&quot;</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;cname&quot;</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            collection：一对多配置中，集合属性的配置方式</span></span><br><span class="line"><span class="comment">            property：被包含集合对象的属性名</span></span><br><span class="line"><span class="comment">            ofType：被包含集合对象泛型的数据类型</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">&quot;students&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">ofType</span>=<span class="string">&quot;student&quot;</span></span></span><br><span class="line"><span class="tag">                    &gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;name&quot;</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;age&quot;</span> <span class="attr">property</span>=<span class="string">&quot;age&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectAll&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;oneToMany&quot;</span>&gt;</span></span><br><span class="line">        select s.*,c.name cname from student s,classes c where c.id = s.cid</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法二</li>
+</ul>
+<p>子查询</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.itheima.table02.OneToManyMapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;oneToMany&quot;</span> <span class="attr">type</span>=<span class="string">&quot;classes&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;name&quot;</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            collection：一对多配置中，集合属性的配置方式</span></span><br><span class="line"><span class="comment">            property：被包含集合对象的属性名</span></span><br><span class="line"><span class="comment">            ofType：被包含集合对象泛型的数据类型</span></span><br><span class="line"><span class="comment">			column：结果集中的指定列作为参数传入select指定的方法中</span></span><br><span class="line"><span class="comment">			select：指定另一个dao方法，执行之后的返回值赋值给当前属性</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">&quot;students&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">ofType</span>=<span class="string">&quot;student&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">column</span>=<span class="string">&quot;id&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">select</span>=<span class="string">&quot;com.itheima.table02.StudentMapper.selectAll&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectAll&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;oneToMany&quot;</span>&gt;</span></span><br><span class="line">            select * from classes</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.itheima.table02.StudentMapper&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectAll&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;student&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">            select * from student where cid=#&#123;cid&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/05%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88mysql%EF%BC%89/04JDBC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/05%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88mysql%EF%BC%89/04JDBC/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-11 18:44:09" itemprop="dateCreated datePublished" datetime="2022-01-11T18:44:09+08:00">2022-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-18 20:27:03" itemprop="dateModified" datetime="2021-10-18T20:27:03+08:00">2021-10-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="JDBC基本使用"><a href="#JDBC基本使用" class="headerlink" title="JDBC基本使用"></a>JDBC基本使用</h2><blockquote>
+<p>JDBC是一套Java语言连接各厂商数据库的规范</p>
+<p>sun公司定义了规范，而各大数据库厂商去实现这套规范，并提供相应的jar包供开发人员使用。这套jar包称之为驱动jar包。</p>
+</blockquote>
+<h3 id="注册驱动"><a href="#注册驱动" class="headerlink" title="注册驱动"></a>注册驱动</h3><p><code>com.mysql.jdbc.Driver</code>类中定义了静态代码块来注册驱动</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException var1) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;Can&#x27;t register driver!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以在使用JDBC时可以使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>来加载<code>Driver</code>类的字节码，从而执行静态代码块注册JDBC驱动</p>
+<h3 id="获取连接对象"><a href="#获取连接对象" class="headerlink" title="获取连接对象"></a>获取连接对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Connection conn = DriverManager.getConnection(url, username, password)</span><br><span class="line"><span class="comment">// url：固定写法——jdbc:mysql://localhost:3306/数据库名?characterEncoding=UTF-8</span></span><br><span class="line"><span class="comment">//使用本地数据库测试时，可以将url简写为jdbc:mysql:///数据库名?characterEncoding=UTF-8</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="获取执行对象"><a href="#获取执行对象" class="headerlink" title="获取执行对象"></a>获取执行对象</h3><blockquote>
+<p>和数据库的连接对象。</p>
+</blockquote>
+<p>执行对象：<code>Statement createStatement()</code></p>
+<p>预编译执行对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PrepareStatement prepareStatement = conn.prepareStatement(<span class="string">&quot;Select * from database where id = ?&quot;</span>);</span><br><span class="line"><span class="comment">//设置占位符</span></span><br><span class="line">prepareStatement.setInt(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用预编译执行对象可以防止SQL注入</strong></p>
+<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><blockquote>
+<p>用于执行sql语句，增删改查的具体操作。</p>
+</blockquote>
+<blockquote>
+<p>增删改操作，返回的是int值，代表影响行数。如果操作的影响行数为0，则代表操作失败。查询操作，返回值是ResultSet，结果集。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ResultSet result = statement.executeQuery(<span class="string">&quot;sql&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> i = statement.executeUpdate(<span class="string">&quot;sql&quot;</span>);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">使用Statement对象执行sql语句，会有被sql注入的风险。因为使用Statement对象执行sql，所有的参数是使用字符串拼接指定的参数。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">ResultSet result = prepareStatement.executeQuery();</span><br><span class="line"><span class="keyword">int</span> i = prepareStatement.executeUpdate();</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">使用预编译对象，可以对sql提前编译，可以避免sql注入问题。</span></span><br><span class="line"><span class="comment">使用Connection中的prepareStatement(String sql)方法预编译sql，得到PreparedStatement对象。其中的sql如果有参数的话，参数位置用?表示，?就是一个占位符。除了?之外，就是指定sql时sql关键字语法，后期再给？赋值时，即使其中包含sql的关键字也不再当成sql语法看待，而是作为普通字符串处理。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="处理执行结果"><a href="#处理执行结果" class="headerlink" title="处理执行结果"></a>处理执行结果</h3><p>结果集处理：结果集对象，用于封装查询语句的结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(result.next)&#123;</span><br><span class="line">    <span class="comment">//result.getXxx(&quot;xxx&quot;);</span></span><br><span class="line">    <span class="keyword">int</span> i = result.getInt(<span class="string">&quot;xxx&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="释放资源"><a href="#释放资源" class="headerlink" title="释放资源"></a>释放资源</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (connection != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    connection.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">if</span> (statement != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    statement.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">if</span> (resultSet != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    resultSet.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h3><p>使用Connection对象中的API可以实现事务管理。</p>
+<p>默认情况下，Connection的事务管理方式是自动提交。如果要手动提交，也就是手动管理事务，必须修改设置为不自动提交。</p>
+<p>​    <code>setAutoCommit(boolean autoCommit)</code>// 设置为false代表不自动提交</p>
+<p>​    <code>commit()</code></p>
+<p>​    <code>rollback()</code></p>
+<p>如果要让一组sql操作在同一个事务中，那么这组sql的执行必须使用同一个Connection。</p>
+<blockquote>
+<p>事务需要添加到业务层，也就是Service层。因为业务层中的逻辑是一个整体，而DAO层是单个的数据库操作。业务层中可能一个业务方法会调用多个DAO方法组合到一起实现某个特殊需求，此时业务是整体，而不是单个sql操作是整体。</p>
+</blockquote>
+<h2 id="JDBC高级"><a href="#JDBC高级" class="headerlink" title="JDBC高级"></a>JDBC高级</h2><h3 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h3><blockquote>
+<p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个。这项技术能明显提高对数据库操作的性能。</p>
+</blockquote>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        InvocationHandler handler = <span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                System.out.println(method);</span><br><span class="line">                <span class="keyword">if</span> (method.getName().equals(<span class="string">&quot;morning&quot;</span>)) &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;Good morning, &quot;</span> + args[<span class="number">0</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        Hello hello = (Hello) Proxy.newProxyInstance(</span><br><span class="line">            Hello.class.getClassLoader(), <span class="comment">// 传入ClassLoader</span></span><br><span class="line">            <span class="keyword">new</span> Class[] &#123; Hello.class &#125;, <span class="comment">// 传入要实现的接口</span></span><br><span class="line">            handler); <span class="comment">// 传入处理调用方法的InvocationHandler</span></span><br><span class="line">        hello.morning(<span class="string">&quot;Bob&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">morning</span><span class="params">(String name)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="img/image-20211018142645689.png" alt="image-20211018142645689"></p>
+<h2 id="连接池-1"><a href="#连接池-1" class="headerlink" title="连接池"></a>连接池</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/04JavaWeb/01-tomcat%E5%92%8Chttp%E5%8D%8F%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/04JavaWeb/01-tomcat%E5%92%8Chttp%E5%8D%8F%E8%AE%AE/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-11 18:44:08" itemprop="dateCreated datePublished" datetime="2022-01-11T18:44:08+08:00">2022-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-09 14:04:59" itemprop="dateModified" datetime="2021-10-09T14:04:59+08:00">2021-10-09</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h2><p><strong>web服务器软件，开发的应用程序可以通过tomcat发布</strong></p>
+<h3 id="tomcat的启动"><a href="#tomcat的启动" class="headerlink" title="tomcat的启动"></a>tomcat的启动</h3><p>windows：启动：<code>startup.bat</code>；关闭：<code>shutdown.bat</code>;</p>
+<p>类unix：启动：<code>startup.sh</code>；关闭：<code>shutdown.sh</code>;</p>
+<blockquote>
+<p>如果拒绝访问，可能是linux防火墙问题，可以尝试开放端口或者关闭防火墙再次尝试</p>
+</blockquote>
+<h3 id="tomcat的配置"><a href="#tomcat的配置" class="headerlink" title="tomcat的配置"></a>tomcat的配置</h3><p>相关配置文件在<code>tomcat\conf\</code>目录下</p>
+<h3 id="项目在IDEA中的部署"><a href="#项目在IDEA中的部署" class="headerlink" title="项目在IDEA中的部署"></a>项目在IDEA中的部署</h3><p>需要配置tomcat环境，发布时将项目打包成war包</p>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p><strong>超文本传输协议</strong></p>
+<blockquote>
+<p>基于TCP/IP协议，默认端口号为80,</p>
+<p>基于请求/响应模型：一次请求对应一次响应</p>
+<ul>
+<li>HTTP协议规定了客户端向服务器发送数据的格式，叫做HTTP请求</li>
+<li>HTTP协议规定了服务器向客户端返回数据的格式，叫做HTTP响应</li>
+</ul>
+</blockquote>
+<h3 id="http请求格式"><a href="#http请求格式" class="headerlink" title="http请求格式"></a>http请求格式</h3><p>请求包括：</p>
+<ol>
+<li>请求行</li>
+<li>请求头</li>
+<li>请求空行</li>
+<li>请求体</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">【请求行】： 描述请求方式、请求URL、以及HTTP版本</span><br><span class="line">    请求方式一共有8种，常用的有两种:GET和POST(不区分大小写)</span><br><span class="line">    GET请求：请求参数拼接在请求行上，在浏览器地址栏看见。                </span><br><span class="line">【请求头】： 描述客户端浏览器告诉服务器若干配置信息     </span><br><span class="line">【空行】： 用于分割请求头与请求体</span><br><span class="line">【请求体】：用于封装POST请求消息的请求参数；GET请求没有请求体数据</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="http响应格式"><a href="#http响应格式" class="headerlink" title="http响应格式"></a>http响应格式</h3><p>响应包括：</p>
+<ol>
+<li>响应行</li>
+<li>响应头</li>
+<li>空行</li>
+<li>响应体</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">【响应行】：由HTTP协议版本、响应状态吗、状态码描述组成</span><br><span class="line">【响应头】：若干个键-值对组成，是服务器用来告诉客户端浏览器一些配置信息。</span><br><span class="line">【空行】：用于分隔响应头和响应体</span><br><span class="line">【响应体】：其实就一个HTML页面中的内容包括标签、CSS样式、JS等等</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a>响应状态码</h3><blockquote>
+<p>服务器给客户端响应数据时，会携带着告诉浏览器当前数据的一个状态码，通过状态码告诉客户端请求成功、请求失败、找不到资源、请求重定向等等。客户端可以通过判断状态码，做出针对性的数据处理。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>100</td>
+<td>只有请求的一部分已经被服务器接收，但只要它没有被拒绝，客户端应继续该请求</td>
+</tr>
+<tr>
+<td><strong>200</strong></td>
+<td><strong>请求成功</strong></td>
+</tr>
+<tr>
+<td><strong>302</strong></td>
+<td><strong>重定向，所请求的页面已经临时转移到一个新的 URL</strong></td>
+</tr>
+<tr>
+<td>304</td>
+<td>访问缓存，所请求的页面已经临时转移到一个新的 URL</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td><strong>客户端错误，请求路径服务器没有对应的资源</strong></td>
+</tr>
+<tr>
+<td>405</td>
+<td>客户端错误，请求方式找不到对应的方法</td>
+</tr>
+<tr>
+<td><strong>500</strong></td>
+<td><strong>服务端错误，可能服务器内部有异常</strong></td>
+</tr>
+</tbody></table>
+<h3 id="常见响应头"><a href="#常见响应头" class="headerlink" title="常见响应头"></a>常见响应头</h3><p>响应头是由一系列的<strong>键值对</strong>组成，是服务器用来告诉客户端浏览器一些配置信息。</p>
+<table>
+<thead>
+<tr>
+<th><strong>Content-Type</strong></th>
+<th><strong>服务器告诉浏览器本次响应体文档格式以及编码格式</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Content-Encoding</td>
+<td>在传输过程中，这个头信息指定页面的编码方式</td>
+</tr>
+<tr>
+<td><strong>Content-disposition</strong></td>
+<td><strong>服务器告诉客户端以什么格式打开响应体数据</strong></td>
+</tr>
+<tr>
+<td>Refresh</td>
+<td>指定浏览器刷新页面的秒数</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>指示响应中的字节数。只有当浏览器使用持久（keep-alive）HTTP 连接时才需要这些信息</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/03HTML&CSS&nginx/HTML/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/03HTML&CSS&nginx/HTML/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-11 18:44:08" itemprop="dateCreated datePublished" datetime="2022-01-11T18:44:08+08:00">2022-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 13:43:54" itemprop="dateModified" datetime="2021-10-02T13:43:54+08:00">2021-10-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/02%E8%BF%9B%E9%98%B6/13-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E3%80%81%E6%97%A5%E5%BF%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/02%E8%BF%9B%E9%98%B6/13-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E3%80%81%E6%97%A5%E5%BF%97/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-11 18:44:08" itemprop="dateCreated datePublished" datetime="2022-01-11T18:44:08+08:00">2022-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-05 19:26:40" itemprop="dateModified" datetime="2021-10-05T19:26:40+08:00">2021-10-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>  <code>JUnit</code> 是一个 <code>Java </code>编程语言的单元测试工具。<code>JUnit</code> 是一个非常重要的测试工具</p>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><p><code>JUnit</code>是一个开放源代码的测试工具。</p>
+<p>提供注解来识别测试方法。</p>
+<p><code>JUnit </code>在一个条中显示进度。如果<strong>运行良好</strong>则是<strong>绿色</strong>；如果<strong>运行失败</strong>，则变成<strong>红色</strong>。</p>
+<p>编写测试方法该测试方法必须是公共的<strong>无参数无返回值的非静态方法</strong></p>
+<p>在测试方法上使用**@Test**注解标注该方法是一个测试方法</p>
+<p>选中测试方法右键通过junit运行该方法</p>
+<table>
+<thead>
+<tr>
+<th><strong>注解</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Test</td>
+<td>表示测试该方法</td>
+</tr>
+<tr>
+<td>@Before</td>
+<td>在测试的方法前运行</td>
+</tr>
+<tr>
+<td>@After</td>
+<td>在测试的方法后运行</td>
+</tr>
+</tbody></table>
+<h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><p><img src="img/image-20210922201902599.png" alt="image-20210922201902599"></p>
+<p><strong>日志技术与输出语句的区别</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>输出语句</strong></th>
+<th><strong>日志技术</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>取消日志</td>
+<td>需要修改代码，灵活性比较差</td>
+<td>不需要修改代码，灵活性比较好</td>
+</tr>
+<tr>
+<td>输出位置</td>
+<td>只能是控制台</td>
+<td>可以将日志信息写入到文件或者数据库中</td>
+</tr>
+<tr>
+<td>多线程</td>
+<td>和业务代码处于一个线程中</td>
+<td>多线程方式记录日志，不影响业务代码的性能</td>
+</tr>
+</tbody></table>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### log4j的配置文件,名字为log4j.properties, 放在src根目录下</span></span><br><span class="line"><span class="meta">log4j.rootLogger</span>=<span class="string">debug,my,fileAppender</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">### direct log messages to my ###</span></span><br><span class="line"><span class="meta">log4j.appender.my</span>=<span class="string">org.apache.log4j.ConsoleAppender</span></span><br><span class="line"><span class="meta">log4j.appender.my.ImmediateFlush</span> = <span class="string">true</span></span><br><span class="line"><span class="meta">log4j.appender.my.Target</span>=<span class="string">System.out</span></span><br><span class="line"><span class="meta">log4j.appender.my.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.my.layout.ConversionPattern</span>=<span class="string">%d %t %5p %c&#123;1&#125;:%L - %m%n</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># fileAppenderʾ</span></span><br><span class="line"><span class="meta">log4j.appender.fileAppender</span>=<span class="string">org.apache.log4j.FileAppender</span></span><br><span class="line"><span class="meta">log4j.appender.fileAppender.ImmediateFlush</span> = <span class="string">true</span></span><br><span class="line"><span class="meta">log4j.appender.fileAppender.Append</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">log4j.appender.fileAppender.File</span>=<span class="string">D:/log4j-log.log</span></span><br><span class="line"><span class="meta">log4j.appender.fileAppender.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.fileAppender.layout.ConversionPattern</span>=<span class="string">%d %5p %c&#123;1&#125;:%L - %m%n</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Log4JTest01</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用log4j的api来获取日志的对象</span></span><br><span class="line">    <span class="comment">//弊端：如果以后我更换日志的实现类，那么下面的代码就需要跟着改</span></span><br><span class="line">    <span class="comment">//不推荐使用</span></span><br><span class="line">    <span class="comment">//private static final Logger LOGGER = Logger.getLogger(Log4JTest01.class);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用slf4j里面的api来获取日志的对象</span></span><br><span class="line">    <span class="comment">//好处：如果以后更换日志的实现类，那么下面的代码不需要跟着修改</span></span><br><span class="line">    <span class="comment">//推荐使用</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span>  <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(Log4JTest01.class);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.导入jar包</span></span><br><span class="line">        <span class="comment">//2.编写配置文件</span></span><br><span class="line">        <span class="comment">//3.在代码中获取日志的对象</span></span><br><span class="line">        <span class="comment">//4.按照日志级别设置日志信息</span></span><br><span class="line">        LOGGER.debug(<span class="string">&quot;debug级别的日志&quot;</span>);</span><br><span class="line">        LOGGER.info(<span class="string">&quot;info级别的日志&quot;</span>);</span><br><span class="line">        LOGGER.warn(<span class="string">&quot;warn级别的日志&quot;</span>);</span><br><span class="line">        LOGGER.error(<span class="string">&quot;error级别的日志&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置文件详解"><a href="#配置文件详解" class="headerlink" title="配置文件详解"></a>配置文件详解</h4><ul>
+<li><p>三个核心</p>
+<ul>
+<li><p><code>Loggers</code>(记录器)        日志的级别</p>
+<p><code>Loggers</code>组件在此系统中常见的五个级别：<code>DEBUG</code>、<code>INFO</code>、<code>WARN</code>、<code>ERROR</code> 和 <code>FATAL</code>。</p>
+<p><code>DEBUG &lt; INFO &lt; WARN &lt; ERROR &lt; FATAL</code>。</p>
+<p><code>Log4j</code>有一个规则：只输出级别不低于设定级别的日志信息。</p>
+</li>
+<li><p><code>Appenders</code>(输出源)   日志要输出的地方</p>
+<p>把日志输出到不同的地方，如控制台<code>Console</code>、文件<code>Files</code>等。</p>
+<ul>
+<li><code>org.apache.log4j.ConsoleAppender</code>（控制台）</li>
+<li><code>org.apache.log4j.FileAppender</code>（文件）</li>
+</ul>
+</li>
+<li><p><code>Layouts</code>(布局)             日志输出的格式</p>
+<p>可以根据自己的喜好规定日志输出的格式</p>
+<p>常用的布局管理器：</p>
+<p>​        <code>org.apache.log4j.PatternLayout</code>（可以灵活地指定布局模式）</p>
+<p>​        <code>org.apache.log4j.SimpleLayout</code>（包含日志信息的级别和信息字符串）</p>
+<p>​        <code>org.apache.log4j.TTCCLayout</code>（包含日志产生的时间、线程、类别等信息）</p>
+<p>​    </p>
+</li>
+</ul>
+</li>
+<li><p>配置根<code>Logger</code></p>
+<ul>
+<li><p>格式</p>
+<p><code>log4j.rootLogger=日志级别，appenderName1，appenderName2，…</code></p>
+</li>
+<li><p>日志级别</p>
+<p><code>OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL</code>或者自定义的级别。</p>
+</li>
+<li><p><code>appenderName1</code></p>
+<p>就是指定日志信息要输出到哪里。可以同时指定多个输出目的地，用逗号隔开。</p>
+<p>例如：log4j.rootLogger＝INFO，ca，fa</p>
+</li>
+</ul>
+</li>
+<li><p><code>ConsoleAppender</code>常用的选项</p>
+<ul>
+<li><p><code>ImmediateFlush=true</code></p>
+<p>表示所有消息都会被立即输出，设为<code>false</code>则不输出，默认值是<code>true</code>。</p>
+</li>
+<li><p><code>Target=System.err</code></p>
+<p>默认值是<code>System.out</code>。</p>
+</li>
+</ul>
+</li>
+<li><p><code>FileAppender</code>常用的选项</p>
+<ul>
+<li><p><code>ImmediateFlush=true</code></p>
+<p>表示所有消息都会被立即输出。设为false则不输出，默认值是<code>true</code></p>
+</li>
+<li><p><code>Append=false</code></p>
+<p><code>true</code>表示将消息添加到指定文件中，原来的消息不覆盖。</p>
+<p><code>false</code>则将消息覆盖指定的文件内容，默认值是<code>true</code>。</p>
+</li>
+<li><p><code>File=D:/logs/logging.log4j</code></p>
+<p>指定消息输出到<code>logging.log4j</code>文件中</p>
+</li>
+</ul>
+</li>
+<li><p><code>PatternLayout</code>常用的选项</p>
+<ul>
+<li><p><code>ConversionPattern=%m%n</code></p>
+<p>设定以怎样的格式显示消息</p>
+<p><img src="img/07_PatternLayout%E5%B8%B8%E7%94%A8%E7%9A%84%E9%80%89%E9%A1%B9.png" alt="07_PatternLayout常用的选项"></p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/02%E8%BF%9B%E9%98%B6/12-XML%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E6%B3%A8%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/02%E8%BF%9B%E9%98%B6/12-XML%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E6%B3%A8%E8%A7%A3/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-11 18:44:08" itemprop="dateCreated datePublished" datetime="2022-01-11T18:44:08+08:00">2022-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-22 21:10:43" itemprop="dateModified" datetime="2021-09-22T21:10:43+08:00">2021-09-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><h4 id="xml作为配置文件的优势"><a href="#xml作为配置文件的优势" class="headerlink" title="xml作为配置文件的优势"></a>xml作为配置文件的优势</h4><p> 当文件中配置的信息较多时,可读性好,可维护性高</p>
+<h4 id="xml概述"><a href="#xml概述" class="headerlink" title="xml概述"></a>xml概述</h4><p> XML的全称为(EXtensible Markup Language)，是一种可扩展的标记语言</p>
+<p> 标记语言: 通过标签来描述数据的一门语言(标签有时我们也将其称之为元素)</p>
+<p> 可扩展：标签的名字是可以自定义的,XML文件是由很多标签组成的,而标签名是可以自定义的</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p> 用于进行存储数据和传输数据</p>
+<p> 作为软件的配置文件</p>
+<h4 id="xml标签的规则"><a href="#xml标签的规则" class="headerlink" title="xml标签的规则"></a>xml标签的规则</h4><p> 标签由一对尖括号和合法标识符组成</p>
+<p> 标签必须成对出现</p>
+<p> 特殊的标签可以不成对,但是必须有结束标记</p>
+<p> 标签中可以定义属性,属性和标签名空格隔开(属性值必须用引号引起来)</p>
+<p> 标签需要正确的嵌套</p>
+<h4 id="xml语法的规则"><a href="#xml语法的规则" class="headerlink" title="xml语法的规则"></a>xml语法的规则</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=“1.0” encoding=“UTF-8” standalone=“yes” ?&gt;</span></span><br><span class="line">	version：该属性是必须存在的</span><br><span class="line">	encoding：该属性不是必须的</span><br><span class="line">		打开当前xml文件的时候应该是使用什么字符编码表(一般取值都是UTF-8)</span><br><span class="line">	standalone: 该属性不是必须的，描述XML文件是否依赖其他的xml文件，取值为yes/no</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>必须存在一个根标签，有且只能有一个</p>
+<p> XML文件中可以定义注释信息</p>
+<p> XML文件中可以存在以下特殊字符</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">&amp;lt;</span> &lt; 小于</span><br><span class="line"></span><br><span class="line"><span class="symbol">&amp;gt;</span> &gt; 大于</span><br><span class="line"></span><br><span class="line"><span class="symbol">&amp;amp;</span> &amp; 和号</span><br><span class="line"></span><br><span class="line"><span class="symbol">&amp;apos;</span> &#x27; 单引号</span><br><span class="line"></span><br><span class="line"><span class="symbol">&amp;quot;</span> &quot; 引号</span><br></pre></td></tr></table></figure>
+
+<p> XML文件中可以存在CDATA区，CDATE区中的内容可以随便写</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;![CDATA[ …内容… ]]&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="xml-DOM解析思想"><a href="#xml-DOM解析思想" class="headerlink" title="xml-DOM解析思想"></a>xml-DOM解析思想</h4><p> <strong>解析:</strong></p>
+<p> 从xml中获取到数据</p>
+<p> <strong>DOM解析:</strong></p>
+<p> DOM（Document Object Model）文档对象模型：就是把文档的各个组成部分看做成对应的对象。</p>
+<p> 会把xml文件全部加载到内存。在内存中形成一个树形结构，再获取对应的值</p>
+<h5 id="dom4j"><a href="#dom4j" class="headerlink" title="dom4j"></a>dom4j</h5><h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><blockquote>
+<p>约束即：用来限定xml文件中,可使用的标签以及属性</p>
+</blockquote>
+<h4 id="DTD约束"><a href="#DTD约束" class="headerlink" title="DTD约束"></a>DTD约束</h4><p><strong>编写DTD步骤</strong></p>
+<p> 1，创建一个文件，这个文件的后缀名为.dtd。</p>
+<p> 2，看xml文件中使用了哪些元素</p>
+ <!ELEMENT><p> 可以定义元素</p>
+<p> 3，判断元素是简单元素还是复杂元素。</p>
+<p> 简单元素：没有子元素。</p>
+<p> 复杂元素：有子元素的元素；</p>
+<h5 id="三种引用方式"><a href="#三种引用方式" class="headerlink" title="三种引用方式"></a>三种引用方式</h5><p> <strong>引入本地dtd</strong></p>
+ <!DOCTYPE 根元素名称 SYSTEM ‘DTD文件的路径'>
+
+<p> <strong>在xml文件内部引入</strong></p>
+  <!DOCTYPE 根元素名称 [ dtd文件内容 ]>
+
+<p> <strong>引入网络dtd</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE 根元素的名称 <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;DTD文件名称&quot;</span> <span class="meta-string">&quot;DTD文档的URL&quot;</span>&gt;</span></span><br><span class="line">&lt;/!DOCTYPE&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="DTD语法规则-定义元素"><a href="#DTD语法规则-定义元素" class="headerlink" title="DTD语法规则-定义元素"></a>DTD语法规则-定义元素</h5><p> 定义一个元素的格式为: <!ELEMENT 元素名 元素类型></p>
+<p> <strong>简单元素：</strong></p>
+<p> EMPTY: 表示标签体为空</p>
+<p> ANY: 表示标签体可以为空也可以不为空</p>
+<p> PCDATA: 表示该元素的内容部分为字符串</p>
+<p> <strong>复杂元素：</strong></p>
+<p> 直接写子元素名称,多个子元素可以使用”,”或者”|”隔开；</p>
+<p> “,”表示定义子元素的顺序 ; “|”: 表示子元素只能出现任意一个</p>
+<p> “?”零次或一次, “+”一次或多次, “*”零次或多次;</p>
+<p> 如果不写则表示出现一次</p>
+<h5 id="语法规则-定义属性"><a href="#语法规则-定义属性" class="headerlink" title="语法规则-定义属性"></a>语法规则-定义属性</h5><p> 定义一个属性的格式为：<code>&lt;!ATTLIST 元素名称 属性名称 属性的类型 属性的约束&gt;</code></p>
+<p> <strong>属性的类型：</strong></p>
+<p> CDATA类型：普通的字符串</p>
+<p> <strong>属性的约束：</strong></p>
+<p> #REQUIRED： 必须的</p>
+<p> #IMPLIED： 属性不是必需的</p>
+<p> #FIXED value：属性值是固定的</p>
+<h4 id="schema和dtd的区别"><a href="#schema和dtd的区别" class="headerlink" title="schema和dtd的区别"></a>schema和dtd的区别</h4><ol>
+<li><p>schema约束文件也是一个xml文件，符合xml的语法，这个文件的后缀名.xsd</p>
+</li>
+<li><p>一个xml中可以引用多个schema约束文件，多个schema使用名称空间区分（名称空间类似于java包名）</p>
+</li>
+<li><p>dtd里面元素类型的取值比较单一常见的是PCDATA类型，但是在schema里面可以支持很多个数据类型</p>
+</li>
+<li><p>schema 语法更加的复杂</p>
+</li>
+</ol>
+<h4 id="schema"><a href="#schema" class="headerlink" title="schema"></a>schema</h4><h5 id="编写schema步骤"><a href="#编写schema步骤" class="headerlink" title="编写schema步骤"></a>编写schema步骤</h5><p> 1，创建一个文件，这个文件的后缀名为<code>.xsd</code>。</p>
+<p> 2，定义文档声明</p>
+<p> 3，<code>schema</code>文件的根标签为：<code> &lt;schema&gt;</code></p>
+<p> 4，在<code>&lt;schema&gt;</code>中定义属性：</p>
+<p><code> xmlns=http://www.w3.org/2001/XMLSchema</code></p>
+<p> 5，在<code>&lt;schema&gt;</code>中定义属性 ：</p>
+<p><code> targetNamespace =唯一的url地址</code>,指定当前这个<code>schema</code>文件的名称空间。</p>
+<p> 6，在<code>&lt;schema&gt;</code>中定义属性 ：</p>
+<p><code> elementFormDefault=&quot;qualified”</code>表示当前<code>schema</code>文件是一个质量良好的文件。</p>
+<p> 7，通过element定义元素</p>
+<p> 8，判断当前元素是简单元素还是复杂元素</p>
+<h5 id="引入schema步骤"><a href="#引入schema步骤" class="headerlink" title="引入schema步骤"></a>引入schema步骤</h5><p> 1，在根标签上定义属性 <code>xmlns=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</code></p>
+<p> 2，通过<code>xmlns</code>引入约束文件的名称空间</p>
+<p> 3，给某一个<code>xmlns</code>属性添加一个标识，用于区分不同的名称空间</p>
+<p> 格式为: <code>xmlns:标识=&quot;名称空间地址&quot; </code>. 标识可以是任意的，但是一般取值都是<code>xsi</code></p>
+<p> 4，通过<code>xsi:schemaLocation</code>指定名称空间所对应的约束文件路径</p>
+<p> 格式为：<code>xsi:schemaLocation = &quot;名称空间url 文件路径&quot;</code></p>
+<h5 id="schema定义属性"><a href="#schema定义属性" class="headerlink" title="schema定义属性"></a>schema定义属性</h5><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;attribute name=<span class="string">&quot;id&quot;</span> type=<span class="string">&quot;string&quot;</span> use=<span class="string">&quot;required&quot;</span>&gt;&lt;/attribute&gt;</span><br><span class="line"></span><br><span class="line">required( 必须的)</span><br><span class="line"></span><br><span class="line">optional( 可选的)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><h4 id="枚举-定义格式"><a href="#枚举-定义格式" class="headerlink" title="枚举-定义格式"></a>枚举-定义格式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举名 </span>&#123; </span><br><span class="line">  枚举项<span class="number">1</span>,枚举项<span class="number">2</span>,枚举项<span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>定义枚举类要用关键字enum</strong>.</p>
+<h4 id="枚举的特点"><a href="#枚举的特点" class="headerlink" title="枚举的特点"></a>枚举的特点</h4><p>1.所有枚举类都是Enum的子类</p>
+<p>2.我们可以通过<code>&quot;枚举类名.枚举项名称&quot;</code>去访问指定的枚举项</p>
+<p>3.每一个枚举项其实就是该枚举的一个对象</p>
+<p>4.枚举也是一个类，也可以去定义成员变量</p>
+<p>5.枚举类的第一行上必须是枚举项，最后一个枚举项后的分号是可以省略的，但是如果枚举类有其他的东西，这个分号就不能省略。建议不要省略</p>
+<p>6.枚举类可以有构造器，但必须是<code>private</code>的，它默认的也是<code>private</code>的。</p>
+<p>   枚举项的用法比较特殊：<code>枚举(&quot;&quot;)</code>;</p>
+<p>7.枚举类也可以有抽象方法，但是枚举项必须重写该方法</p>
+<h4 id="枚举的方法"><a href="#枚举的方法" class="headerlink" title="枚举的方法"></a>枚举的方法</h4><table>
+<thead>
+<tr>
+<th><strong>方法名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>String name()</td>
+<td>获取枚举项的名称</td>
+</tr>
+<tr>
+<td>int ordinal()</td>
+<td>返回枚举项在枚举类中的索引值</td>
+</tr>
+<tr>
+<td>int compareTo(E o)</td>
+<td>比较两个枚举项，返回的是索引值的差值</td>
+</tr>
+<tr>
+<td>String  toString()</td>
+<td>返回枚举常量的名称</td>
+</tr>
+<tr>
+<td>static <T> T valueOf(Class<T> type,String name)</td>
+<td>获取指定枚举类中的指定名称的枚举值</td>
+</tr>
+<tr>
+<td>values()</td>
+<td>获得所有的枚举项</td>
+</tr>
+</tbody></table>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h4 id="注解的优势"><a href="#注解的优势" class="headerlink" title="注解的优势"></a>注解的优势</h4><p> 当Servlet较多时,在xml中配置比较麻烦,可以直接在类上用注解配置,简洁,方便 </p>
+<h4 id="注解的概述"><a href="#注解的概述" class="headerlink" title="注解的概述"></a>注解的概述</h4><p> 对程序进行标注和解释</p>
+<h4 id="注解和注释的区别"><a href="#注解和注释的区别" class="headerlink" title="注解和注释的区别"></a>注解和注释的区别</h4><p> 注释: 给程序员看的</p>
+<p> 注解: 给编译器看的</p>
+<h4 id="自定义注解格式"><a href="#自定义注解格式" class="headerlink" title="自定义注解格式"></a>自定义注解格式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> 注解名称 &#123;</span><br><span class="line">   <span class="keyword">public</span> 属性类型 属性名() <span class="keyword">default</span> 默认值 ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>属性类型</strong></p>
+<p> 基本数据类型, String, Class, 注解, 枚举, 以上类型的一维数组 </p>
+<p><strong>特殊属性value</strong></p>
+<p> 如果只给value属性赋值,那么value可以省略不写 </p>
+<h4 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h4><p><strong>元注解：就是描述注解的注解</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>元注解名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Target</td>
+<td>指定了注解能在哪里使用</td>
+</tr>
+<tr>
+<td>@Retention</td>
+<td>可以理解为保留时间(生命周期)</td>
+</tr>
+<tr>
+<td>@Inherited</td>
+<td>表示修饰的自定义注解可以被子类继承</td>
+</tr>
+<tr>
+<td>@Documented</td>
+<td>表示该自定义注解，会出现在API文档里面。</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/02%E8%BF%9B%E9%98%B6/11-%E5%8F%8D%E5%B0%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/02%E8%BF%9B%E9%98%B6/11-%E5%8F%8D%E5%B0%84/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-11 18:44:08" itemprop="dateCreated datePublished" datetime="2022-01-11T18:44:08+08:00">2022-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-18 15:44:51" itemprop="dateModified" datetime="2021-09-18T15:44:51+08:00">2021-09-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="类加载"><a href="#类加载" class="headerlink" title="- 类加载"></a>- 类加载</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/czwbig/p/11127222.html">https://www.cnblogs.com/czwbig/p/11127222.html</a></p>
+<p><strong>类加载器的常用方法</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>方法名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static ClassLoader getSystemClassLoader()</td>
+<td>获取系统类加载器</td>
+</tr>
+<tr>
+<td>public InputStream getResourceAsStream(String  name)</td>
+<td>加载某一个资源文件</td>
+</tr>
+</tbody></table>
+<h3 id="反射-1"><a href="#反射-1" class="headerlink" title="- 反射"></a>- 反射</h3><blockquote>
+<p> 好处： 降低耦合性  。 运行时执行即可，编译期不需要同时存在。<br>            运行过程中。动态的获取任意的类，包括里面的构造方法、成员变量、成员方法</p>
+</blockquote>
+<blockquote>
+<p>类的<strong>class文件</strong>   在java中 用 <code>Class</code> 类的对象去表示。<br>class文件中的<strong>成员变量</strong>   在java中<code> Field</code> 类的对象去表示<br>class文件中的<strong>构造方法</strong>   在java中 <code>Constructor</code> 类的对象去表示<br>class文件中的<strong>成员方法</strong>   在java中<code> Method</code> 类的对象去表示</p>
+</blockquote>
+<h4 id="获取Class文件对象"><a href="#获取Class文件对象" class="headerlink" title="获取Class文件对象"></a>获取Class文件对象</h4><ul>
+<li><code>类名.class </code></li>
+<li><code>对象名.getClass()  </code></li>
+<li><code>Class.forName()</code></li>
+</ul>
+<ol>
+<li><p>通过类名获取Class对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class DemoClass = 类名.class;</span><br></pre></td></tr></table></figure></li>
+<li><p>通过类的实例对象来获取类的Class对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Student stu = <span class="keyword">new</span> Student();</span><br><span class="line">Class DemoClass = stu.getClass();</span><br></pre></td></tr></table></figure></li>
+<li><p>通过全类名获取class文件对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; DemoClass = Class.forName(<span class="string">&quot;com.itheima.day15.Student&quot;</span>);</span><br><span class="line">System.out.println(aClass2);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="获取Constructor对象"><a href="#获取Constructor对象" class="headerlink" title="获取Constructor对象"></a>获取Constructor对象</h4><p><code>Constructor&lt;?&gt;[] getConstructors()</code>：返回所有公共构造方法对象的数组</p>
+<p><code> Constructor&lt;?&gt;[] getDeclaredConstructors()</code>：返回所有构造方法对象的数组</p>
+<p> <code>Constructor&lt;T&gt; getConstructor(Class&lt;?&gt;... parameterTypes)</code>：返回单个公共构造方法对象</p>
+<p><code> Constructor&lt;T&gt; getDeclaredConstructor(Class&lt;?&gt;... parameterTypes)</code>：返回单个构造方法对象</p>
+<h5 id="Constructor类中用于创建对象的方法"><a href="#Constructor类中用于创建对象的方法" class="headerlink" title="Constructor类中用于创建对象的方法"></a>Constructor类中用于创建对象的方法</h5><p><code> T newInstance(Object... initargs)</code>：根据指定的构造方法创建对象</p>
+<p> <code>setAccessible(boolean flag)</code>：设置为true,表示取消访问检查</p>
+<h4 id="获取Field对象"><a href="#获取Field对象" class="headerlink" title="获取Field对象"></a>获取Field对象</h4><p><code>Field[] getFields()</code>：返回所有公共成员变量对象的数组</p>
+<p> <code>Field[] getDeclaredFields()</code>：返回所有成员变量对象的数组</p>
+<p> <code>Field getField(String name)</code>：返回单个公共成员变量对象</p>
+<p><code> Field getDeclaredField(String name)</code>：返回单个成员变量对象</p>
+<h5 id="利用Field赋值和获取值"><a href="#利用Field赋值和获取值" class="headerlink" title="利用Field赋值和获取值"></a>利用Field赋值和获取值</h5><p><code>void set(Object obj, Object value)</code>: 赋值</p>
+<p><code>Object get(Object obj)</code>: 获取值</p>
+<h4 id="获取Method对象"><a href="#获取Method对象" class="headerlink" title="获取Method对象"></a>获取Method对象</h4><p><code>Method[] getMethods()</code>: 返回所有公共成员方法对象的数组，包括继承的</p>
+<p><code> Method[] getDeclaredMethods()</code>: 返回所有成员方法对象的数组，不包括继承的</p>
+<p> <code>Method getMethod(String name,Class&lt;?&gt;... parameterTypes)</code>: 返回单个公共成员方法对象</p>
+<p><code> Method getDeclaredMethod(String name,Class&lt;?&gt;... parameterTypes)</code>: 返回单个成员方法对象</p>
+<h5 id="利用Method对象运行方法"><a href="#利用Method对象运行方法" class="headerlink" title="利用Method对象运行方法"></a>利用Method对象运行方法</h5><p><code>Object invoke(Object obj, Object... args)</code></p>
+<p> 参数一：用obj对象调用该方法</p>
+<p> 参数二：调用方法的传递的参数（如果没有就不写）</p>
+<p> 返回值：方法的返回值（如果没有就不写）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/02%E8%BF%9B%E9%98%B6/11-00%E7%B1%BB%E5%8A%A0%E8%BD%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ʕ•ᴥ•ʔ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/02%E8%BF%9B%E9%98%B6/11-00%E7%B1%BB%E5%8A%A0%E8%BD%BD/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-11 18:44:08" itemprop="dateCreated datePublished" datetime="2022-01-11T18:44:08+08:00">2022-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-22 18:44:02" itemprop="dateModified" datetime="2021-09-22T18:44:02+08:00">2021-09-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[czwbig] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/czwbig/p/11127222.html">https://www.cnblogs.com/czwbig/p/11127222.html</a></p>
+<h1 id="Java虚拟机类加载机制"><a href="#Java虚拟机类加载机制" class="headerlink" title="Java虚拟机类加载机制"></a>Java虚拟机类加载机制</h1><p>虚拟机把描述类的数据从 Class 文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的 Java 类型，这就是虚拟机的类加载机制。</p>
+<p>在Java语言里面，类型的加载、连接和初始化过程都是在程序运行期间完成的</p>
+<h3 id="类加载的过程"><a href="#类加载的过程" class="headerlink" title="类加载的过程"></a>类加载的过程</h3><p>类的个生命周期如下图：</p>
+<p><img src="img/14923529-ac753500687cf9d2.png" alt="img"><br>为支持运行时绑定，解析过程在某些情况下可在初始化之后再开始，除解析过程外的其他加载过程必须按照如图顺序开始。</p>
+<h5 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h5><ol>
+<li>通过全限定类名来获取定义此类的二进制字节流。</li>
+<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</li>
+<li>在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据的访问入口。</li>
+</ol>
+<h5 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h5><p>验证是连接阶段的第一步，这一阶段的目的是为了确保 Class 文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。</p>
+<ol>
+<li>文件格式验证：如是否以魔数 0xCAFEBABE 开头、主、次版本号是否在当前虚拟机处理范围之内、常量合理性验证等。<br>此阶段保证输入的字节流能正确地解析并存储于方法区之内，格式上符合描述一个 Java类型信息的要求。</li>
+<li>元数据验证：是否存在父类，父类的继承链是否正确，抽象类是否实现了其父类或接口之中要求实现的所有方法，字段、方法是否与父类产生矛盾等。<br>第二阶段，保证不存在不符合 Java 语言规范的元数据信息。</li>
+<li>字节码验证：通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。例如保证跳转指令不会跳转到方法体以外的字节码指令上。</li>
+<li>符号引用验证：在解析阶段中发生，保证可以将符号引用转化为直接引用。</li>
+</ol>
+<p>可以考虑使用 <code>-Xverify:none</code> 参数来关闭大部分的类验证措施，以缩短虚拟机类加载的时间。</p>
+<h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><p>为<strong>类变量</strong>分配内存并设置类变量初始值，这些变量所使用的内存都将在方法区中进行分配。</p>
+<h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><p>虚拟机将常量池内的符号引用替换为直接引用的过程。<br>解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符 7 类符号引用进行。</p>
+<h5 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h5><p>到初始化阶段，才真正开始执行类中定义的 Java 程序代码，此阶段是执行 <code>&lt;clinit&gt;()</code> 方法的过程。</p>
+<p><code>&lt;clinit&gt;()</code> 方法是由编译器按语句在源文件中出现的顺序，依次自动收集类中的所有<strong>类变量</strong>的赋值动作和静态代码块中的语句合并产生的。（不包括构造器中的语句。构造器是初始化对象的，类加载完成后，创建对象时候将调用的 <code>&lt;init&gt;()</code> 方法来初始化对象）</p>
+<p>静态语句块中只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块可以赋值，但是不能访问，如下程序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">// 给变量赋值可以正常编译通过</span></span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 这句编译器会提示&quot;非法向前引用&quot;</span></span><br><span class="line">        System.out.println(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;clinit&gt;()</code> 不需要显式调用父类（接口除外，接口不需要调用父接口的初始化方法，只有使用到父接口中的静态变量时才需要调用）的初始化方法 <code>&lt;clinit&gt;()</code>，虚拟机会保证在子类的 <code>&lt;clinit&gt;()</code> 方法执行之前，父类的 <code>&lt;clinit&gt;()</code> 方法已经执行完毕，也就意味着父类中定义的静态语句块要优先于子类的变量赋值操作。</p>
+<p><code>&lt;clinit&gt;()</code> 方法对于类或接口来说并不是必需的，如果一个类中没有静态语句块，也没有对变量的赋值操作，那么编译器可以不为这个类生成 <code>&lt;clinit&gt;()</code> 方法。</p>
+<p>虚拟机会保证一个类的 <code>&lt;clinit&gt;()</code> 方法在多线程环境中被正确地加锁、同步，如果多个线程同时去初始化一个类，那么只会有一个线程去执行这个类的 <code>&lt;clinit&gt;()</code> 方法，其他线程都需要阻塞等待，直到活动线程执行 <code>&lt;clinit&gt;()</code> 方法完毕。</p>
+<h3 id="类加载的时机"><a href="#类加载的时机" class="headerlink" title="类加载的时机"></a>类加载的时机</h3><p>对于初始化阶段，虚拟机规范规定了有且只有 5 种情况必须立即对类进行“初始化”（而加载、验证、准备自然需要在此之前开始）：</p>
+<ol>
+<li>遇到new、getstatic 和 putstatic 或 invokestatic 这4条字节码指令时，如果类没有进行过初始化，则需要先触发其初始化。对应场景是：使用 new 实例化对象、读取或设置一个类的静态字段（被 final 修饰、已在编译期把结果放入常量池的静态字段除外）、以及调用一个类的静态方法。</li>
+<li>对类进行反射调用的时候，如果类没有进行过初始化，则需要先触发其初始化。</li>
+<li>当初始化类的父类还没有进行过初始化，则需要先触发其父类的初始化。（而一个接口在初始化时，并不要求其父接口全部都完成了初始化）</li>
+<li>虚拟机启动时，用户需要指定一个要执行的主类（包含 main() 方法的那个类），<br>虚拟机会先初始化这个主类。</li>
+</ol>
+<blockquote>
+<ol>
+<li>当使用 JDK 1.7 的动态语言支持时，如果一个 java.lang.invoke.MethodHandle 实例最后的解析结果 REF_getStatic、REF_putStatic、REF_invokeStatic 的方法句柄，并且这个方法句柄所对应的类没有进行过初始化，则需要先触发其初始化。</li>
+</ol>
+</blockquote>
+<p>第5种情况，我暂时看不懂。</p>
+<p>以上这 5 种场景中的行为称为对一个类进行主动引用。除此之外，所有引用类的方式都不会触发初始化，称为被动引用，例如：</p>
+<ol>
+<li>通过子类引用父类的静态字段，不会导致子类初始化。</li>
+<li>通过数组定义来引用类，不会触发此类的初始化。<code>MyClass[] cs = new MyClass[10];</code></li>
+<li>常量在编译阶段会存入调用类的常量池中，本质上并没有直接引用到定义常量的类，因此不会触发定义常量的类的初始化。</li>
+</ol>
+<h1 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h1><p>把实现类加载阶段中的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作的代码模块称为“类加载器”。</p>
+<p>将 class 文件二进制数据放入方法区内，然后在堆内（heap）创建一个 java.lang.Class 对象，Class 对象封装了类在方法区内的数据结构，并且向开发者提供了访问方法区内的数据结构的接口。</p>
+<p>目前类加载器却在类层次划分、OSGi、热部署、代码加密等领域非常重要，我们运行任何一个 Java 程序都会涉及到类加载器。</p>
+<h3 id="类的唯一性和类加载器"><a href="#类的唯一性和类加载器" class="headerlink" title="类的唯一性和类加载器"></a>类的唯一性和类加载器</h3><p>对于任意一个类，都需要由加载它的类加载器和这个类本身一同确立其在Java虚拟机中的唯一性。</p>
+<p>即使两个类来源于同一个 Class 文件，被同一个虚拟机加载，只要加载它们的类加载器不同，那这两个类也不相等。<br>这里所指的“相等”，包括代表类的 Class 对象的 equals() 方法、 isAssignableFrom() 方法、isInstance() 方法的返回结果，也包括使用 instanceof 关键字做对象所属关系判定等情况。</p>
+<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成，每一个层次的类加载器都是如此，因此所有的加载请求最终都应该传送到顶层的启动类加载器中，只有当父加载器反馈自己无法完成这个加载请求（它的搜索范围中没有找到所需的类）时，子加载器才会尝试自己去加载。</p>
+<p><img src="img/1240.png" alt="图摘自《码出高效》"></p>
+<p>这里类加载器之间的父子关系一般不会以继承（Inheritance）的关系来实现，而是都使用组合（Composition）关系来复用父加载器的代码。</p>
+<p>Bootstrap 类加载器是用 C++ 实现的，是虚拟机自身的一部分，如果获取它的对象，将会返回 null；扩展类加载器和应用类加载器是独立于虚拟机外部，为 Java 语言实现的，均继承自抽象类 java.lang.ClassLoader ，开发者可直接使用这两个类加载器。</p>
+<p>Application 类加载器对象可以由 <code>ClassLoader.getSystemClassLoader()</code> 方法的返回，所以一般也称它为系统类加载器。它负责加载用户类路径（ClassPath）上所指定的类库，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
+<p>双亲委派模型对于保证 Java 程序的稳定运作很重要，例如类 <code>java.lang.Object</code>，它存放在 rt.jar 之中，无论哪一个类加载器要加载这个类，最终都是委派给处于模型最顶端的启动类加载器进行加载，因此 Object 类在程序的各种类加载器环境中都是同一个类。</p>
+<p>双亲委派模型的加载类逻辑可参考如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代码摘自《深入理解Java虚拟机》</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">synchronized</span> Class&lt;?&gt; loadClass(String name, <span class="keyword">boolean</span> resolve) <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">    <span class="comment">// 首先，检查请求的类是否已经被加载过了</span></span><br><span class="line">    Class c = findLoadedClass(name);</span><br><span class="line">    <span class="keyword">if</span> (c == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (parent != <span class="keyword">null</span>) &#123;</span><br><span class="line">                c = parent.loadClass(name, <span class="keyword">false</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                c = findBootstrapClassOrNull(name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">        <span class="comment">// 如果父类加载器抛出ClassNotFoundException</span></span><br><span class="line">        <span class="comment">// 说明父类加载器无法完成加载请求</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 在父类加载器无法加载的时候</span></span><br><span class="line">            <span class="comment">// 再调用本身的findClass方法来进行类加载</span></span><br><span class="line">            c = findClass(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (resolve) &#123;</span><br><span class="line">        resolveClass(c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="破坏双亲委派模型"><a href="#破坏双亲委派模型" class="headerlink" title="破坏双亲委派模型"></a>破坏双亲委派模型</h5><p>双亲委派模型主要出现过 3 较大规模的“被破坏”情况。</p>
+<ol>
+<li>双亲委派模型在引入之前已经存在破坏它的代码存在了。<br>双亲委派模型在 JDK 1.2 之后才被引入，而类加载器和抽象类 <code>java.lang.ClassLoader</code> 则在 JDK 1.0 时代就已经存在，JDK 1.2之后，其添加了一个新的 protected 方法 <code>findClass()</code>，在此之前，用户去继承 ClassLoader 类的唯一目的就是为了重写 <code>loadClass()</code> 方法，而双亲委派的具体逻辑就实现在这个方法之中，JDK 1.2 之后已不提倡用户再去覆盖 <code>loadClass()</code> 方法，而应当把自己的类加载逻辑写到 <code>findClass()</code> 方法中，这样就可以保证新写出来的类加载器是符合双亲委派规则的。</li>
+<li>基础类无法调用类加载器加载用户提供的代码。<br>双亲委派很好地解决了各个类加载器的基础类的统一问题（越基础的类由越上层的加载器进行加载），但如果基础类又要调用用户的代码，例如 JNDI 服务，JNDI 现在已经是 Java 的标准服务，它的代码由启动类加载器去加载（在 JDK 1.3 时放进去的 rt.jar ），但 JNDI 的目的就是对资源进行集中管理和查找，它需要调用由独立厂商实现并部署在应用程序的 ClassPath 下的 JNDI 接口提供者（SPI,Service Provider Interface，例如 JDBC 驱动就是由 MySQL 等接口提供者提供的）的代码，但启动类加载器只能加载基础类，无法加载用户类。</li>
+</ol>
+<blockquote>
+<p>为此 Java 引入了线程上下文类加载器（Thread Context ClassLoader）。这个类加载器可以通过 <code>java.lang.Thread.setContextClassLoaser()</code> 方法进行设置，如果创建线程时还未设置，它将会从父线程中继承一个，如果在应用程序的全局范围内都没有设置过的话，那这个类加载器默认就是应用程序类加载器。<br>如此，JNDI 服务使用这个线程上下文类加载器去加载所需要的 SPI 代码，也就是父类加载器请求子类加载器去完成类加载的动作，这种行为实际上就是打通了双亲委派模型的层次结构来逆向使用类加载器，实际上已经违背了双亲委派模型的一般性原则，但这也是无可奈何的事情。Java 中所有涉及 SPI 的加载动作基本上都采用这种方式，例如 JNDI、JDBC、JCE、JAXB 和 JBI 等。</p>
+</blockquote>
+<ol>
+<li>用户对程序动态性的追求。<br>代码热替换（HotSwap）、模块热部署（Hot Deployment）等，OSGi 实现模块化热部署的关键则是它自定义的类加载器机制的实现。每一个程序模块（Bundle）都有一个自己的类加载器，当需要更换一个 Bundle 时，就把 Bundle 连同类加载器一起换掉以实现代码的热替换。</li>
+</ol>
+<blockquote>
+<p>在 OSGi 环境下，类加载器不再是双亲委派模型中的树状结构，而是进一步发展为更加复杂的网状结构，当收到类加载请求时，OSGi 将按照下面的顺序进行类搜索：<br>1）将以 java.* 开头的类委派给父类加载器加载。<br>2）否则，将委派列表名单内的类委派给父类加载器加载。<br>3）否则，将 Import 列表中的类委派给 Export 这个类的 Bundle 的类加载器加载。<br>4）否则，查找当前 Bundle 的 ClassPath，使用自己的类加载器加载。<br>5）否则，查找类是否在自己的 Fragment Bundle 中，如果在，则委派给 Fragment Bundle 的类加载器加载。<br>6）否则，查找 Dynamic Import 列表的 Bundle，委派给对应 Bundle 的类加载器加载。<br>7）否则，类查找失败。<br>上面的查找顺序中只有开头两点仍然符合双亲委派规则，其余的类查找都是在平级的类加载器中进行的。OSGi 的 Bundle 类加载器之间只有规则，没有固定的委派关系。</p>
+</blockquote>
+<h3 id="自定义类加载器"><a href="#自定义类加载器" class="headerlink" title="自定义类加载器"></a>自定义类加载器</h3><p>Java 默认 ClassLoader，只加载指定目录下的 class，如果需要动态加载类到内存，例如要从远程网络下来类的二进制，然后调用这个类中的方法实现我的业务逻辑，如此，就需要自定义 ClassLoader。</p>
+<p>自定义类加载器分为两步：</p>
+<ol>
+<li>继承 java.lang.ClassLoader</li>
+<li>重写父类的 findClass() 方法</li>
+</ol>
+<p>针对第 1 步，为什么要继承 ClassLoader 这个抽象类，而不继承 AppClassLoader 呢？<br>因为它和 ExtClassLoader 都是 Launcher 的静态内部类，其访问权限是缺省的包访问权限。<br><code>static class AppClassLoader extends URLClassLoader&#123;...&#125;</code></p>
+<p>第 2 步，JDK 的 <code>loadCalss()</code> 方法在所有父类加载器无法加载的时候，会调用本身的 <code>findClass()</code> 方法来进行类加载，因此我们只需重写 <code>findClass()</code> 方法找到类的二进制数据即可。</p>
+<p>下面我自定义了一个简单的类加载器，并加载一个简单的类。</p>
+<p>首先是需要被加载的简单类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 存放于D盘根目录</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Test类已成功加载运行！&quot;</span>);</span><br><span class="line">        ClassLoader classLoader = Test.class.getClassLoader();</span><br><span class="line">        System.out.println(<span class="string">&quot;加载我的classLoader：&quot;</span> + classLoader);</span><br><span class="line">        System.out.println(<span class="string">&quot;classLoader.parent：&quot;</span> + classLoader.getParent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>并使用 <code>javac -encoding utf8 Test.java</code> 编译成 Test.class 文件。</p>
+<p>类加载器代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClassLoader</span> <span class="keyword">extends</span> <span class="title">ClassLoader</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt; findClass(String name) <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">        <span class="comment">// 加载D盘根目录下指定类名的class</span></span><br><span class="line">        String clzDir = <span class="string">&quot;D:\\&quot;</span> + File.separatorChar</span><br><span class="line">                + name.replace(<span class="string">&#x27;.&#x27;</span>, File.separatorChar) + <span class="string">&quot;.class&quot;</span>;</span><br><span class="line">        <span class="keyword">byte</span>[] classData = getClassData(clzDir);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (classData == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ClassNotFoundException();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> defineClass(name, classData, <span class="number">0</span>, classData.length);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">byte</span>[] getClassData(String path) &#123;</span><br><span class="line">        <span class="keyword">try</span> (InputStream ins = <span class="keyword">new</span> FileInputStream(path);</span><br><span class="line">             ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream()</span><br><span class="line">        ) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> bufferSize = <span class="number">4096</span>;</span><br><span class="line">            <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[bufferSize];</span><br><span class="line">            <span class="keyword">int</span> bytesNumRead = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> ((bytesNumRead = ins.read(buffer)) != -<span class="number">1</span>) &#123;</span><br><span class="line">                baos.write(buffer, <span class="number">0</span>, bytesNumRead);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> baos.toByteArray();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用类加载器加载调用 Test 类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClassLoaderTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 指定类加载器加载调用</span></span><br><span class="line">        MyClassLoader classLoader = <span class="keyword">new</span> MyClassLoader();</span><br><span class="line">        classLoader.loadClass(<span class="string">&quot;Test&quot;</span>).getMethod(<span class="string">&quot;test&quot;</span>).invoke(<span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Test.test()已成功加载运行！</span><br><span class="line">加载我的classLoader：class MyClassLoader</span><br><span class="line">classLoader.parent：class sun.misc.Launcher$AppClassLoader</span><br></pre></td></tr></table></figure>
+
+<h3 id="线程上下文类加载器"><a href="#线程上下文类加载器" class="headerlink" title="线程上下文类加载器"></a>线程上下文类加载器</h3><p>如上所说，为解决基础类无法调用类加载器加载用户提供代码的问题，Java 引入了线程上下文类加载器（Thread Context ClassLoader）。这个类加载器默认就是 Application 类加载器，并且可以通过 <code>java.lang.Thread.setContextClassLoaser()</code> 方法进行设置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Now create the class loader to use to launch the application</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    loader = AppClassLoader.getAppClassLoader(extcl);</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> InternalError(</span><br><span class="line"><span class="string">&quot;Could not create application class loader&quot;</span> );</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Also set the context class loader for the primordial thread.</span></span><br><span class="line">Thread.currentThread().setContextClassLoader(loader);</span><br></pre></td></tr></table></figure>
+
+<p>那么问题来了，我们使用 <code>ClassLoader.getSystemClassLoader()</code> 方法也可以获取到 Application 类加载器，使用它就可以加载用户类了呀，为什么还需要线程上下文类加载器？<br>其实直接使用 <code>getSystemClassLoader()</code> 方法获取 AppClassLoader 加载类也可以满足一些情况，但有时候我们需要使用自定义类加载器去加载某个位置的类时，例如Tomcat 使用的线程上下文类加载器并非 AppClassLoader ，而是 Tomcat 自定义类加载器。</p>
+<p>以 Tomcat 为例，其每个 Web 应用都有一个对应的类加载器实例，该类加载器使用代理模式，首先尝试去加载某个类，如果找不到再代理给父类加载器这与一般类加载器的顺序是相反的。<br>这是 Java Servlet 规范中的推荐做法，其目的是使得 Web 应用自己的类的优先级高于 Web 容器提供的类。</p>
+<p>更多关于 Tomcat 类加载器的知识，这里暂时先不讲了。</p>
+<h3 id="new一个对象过程中发生了什么？"><a href="#new一个对象过程中发生了什么？" class="headerlink" title="new一个对象过程中发生了什么？"></a>new一个对象过程中发生了什么？</h3><ol>
+<li><strong>确认类元信息是否存在。</strong>当 JVM 接收到 new 指令时，首先在 metaspace 内检查需要创建的类元信息是否存在。 若不存在，那么在双亲委派模式下，使用当前类加载器以 ClassLoader + 包名＋类名为 Key 进行查找对应的 class 文件。 如果没有找到文件，则抛出 ClassNotFoundException 异常 ， 如果找到，则进行类加载（加载 - 验证 - 准备 - 解析 - 初始化），并生成对应的 Class 类对象。</li>
+<li><strong>分配对象内存。</strong> 首先计算对象占用空间大小，如果实例成员变量是引用变量，仅分配引用变量空间即可，即 4 个字节大小，接着在堆中划分—块内存给新对象。 在分配内存空间时，需要进行同步操作，比如采用 CAS (Compare And Swap) 失败重试、 区域加锁等方式保证分配操作的原子性。</li>
+<li><strong>设定默认值。</strong> 成员变量值都需要设定为默认值， 即各种不同形式的零值。</li>
+<li><strong>设置对象头。</strong>设置新对象的哈希码、 GC 信息、锁信息、对象所属的类元信息等。这个过程的具体设置方式取决于 JVM 实现。</li>
+<li><strong>执行 init 方法。</strong> 初始化成员变量，执行实例化代码块，调用类的构造方法，并把堆内对象的首地址赋值给引用变量。</li>
+</ol>
 
       
     </div>
@@ -247,6 +1740,9 @@
 
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -313,7 +1809,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -360,8 +1856,8 @@
 
 <div class="copyright">
   
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-kiss-wink-heart"></i>
   </span>
