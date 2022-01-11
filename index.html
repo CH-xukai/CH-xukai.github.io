@@ -183,7 +183,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-01-11 20:20:34 / 修改时间：20:26:09" itemprop="dateCreated datePublished" datetime="2022-01-11T20:20:34+08:00">2022-01-11</time>
+              <time title="创建时间：2022-01-11 20:20:34 / 修改时间：20:31:12" itemprop="dateCreated datePublished" datetime="2022-01-11T20:20:34+08:00">2022-01-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -208,7 +208,7 @@
       
           <h1 id="MQ"><a href="#MQ" class="headerlink" title="MQ"></a>MQ</h1><p><strong>同步通讯</strong></p>
 <p>Feign的调用就属于同步方式，虽然调用可以实时得到结果，但存在下面的问题：</p>
-<p><img src="img/image-20210717162004285-16419039619547.png" alt="image-20210717162004285"></p>
+<p><img src="http://hexo.superk.site/image-20210717162004285-16419039619547.png" alt="image-20210717162004285"></p>
 <p>总结：</p>
 <p>同步调用的优点：</p>
 <ul>
@@ -227,7 +227,7 @@
 <p>在事件模式中，支付服务是事件发布者（publisher），在支付完成后只需要发布一个支付成功的事件（event），事件中带上订单id。</p>
 <p>订单服务和物流服务是事件订阅者（Consumer），订阅支付成功的事件，监听到事件后完成自己业务即可。</p>
 <p>为了解除事件发布者与订阅者之间的耦合，两者并不是直接通信，而是有一个中间人（Broker）。发布者发布事件到Broker，不关心谁来订阅事件。订阅者从Broker订阅事件，不关心谁发来的消息。</p>
-<p><img src="img/image-20210422095356088-16419039619548.png" alt="image-20210422095356088"></p>
+<p><img src="http://hexo.superk.site/image-20210422095356088-16419039619548.png" alt="image-20210422095356088"></p>
 <p>Broker 是一个像数据总线一样的东西，所有的服务要接收数据和发送数据都发到这个总线上，这个总线就像协议一样，让服务间的通讯变得标准和可控。</p>
 <p>好处：</p>
 <ul>
@@ -247,7 +247,7 @@
 <li>架构复杂了，业务没有明显的流程线，不好管理</li>
 <li>需要依赖于Broker的可靠、安全、性能</li>
 </ul>
-<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p><img src="img/image-20211214201821888-16419039619559.png" alt="image-20211214201821888"></p>
+<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p><img src="http://hexo.superk.site/image-20211214201821888-16419039619559.png" alt="image-20211214201821888"></p>
 <blockquote>
 <p>RabbitMQ中的一些角色：</p>
 <ul>
@@ -258,10 +258,10 @@
 <li>virtualHost：虚拟主机，隔离不同租户的exchange、queue、消息的隔离</li>
 </ul>
 </blockquote>
-<h3 id="消息模型"><a href="#消息模型" class="headerlink" title="消息模型"></a>消息模型</h3><p><img src="img/image-20211214201950885-164190396195510.png" alt="image-20211214201950885"></p>
+<h3 id="消息模型"><a href="#消息模型" class="headerlink" title="消息模型"></a>消息模型</h3><p><img src="http://hexo.superk.site/image-20211214201950885-164190396195510.png" alt="image-20211214201950885"></p>
 <hr>
 <h3 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h3><h4 id="简单队列"><a href="#简单队列" class="headerlink" title="简单队列"></a>简单队列</h4><p><strong>模型图</strong></p>
-<p><img src="img/image-20211214202115365-164190396195511.png" alt="image-20211214202115365"></p>
+<p><img src="http://hexo.superk.site/image-20211214202115365-164190396195511.png" alt="image-20211214202115365"></p>
 <hr>
 <blockquote>
 <p>官方的HelloWorld是基于最基础的消息队列模型来实现的，只包括三个角色：</p>
@@ -337,7 +337,7 @@
 
 
 <h5 id="WorkQueue"><a href="#WorkQueue" class="headerlink" title="WorkQueue"></a>WorkQueue</h5><p>Work queues，也被称为（Task queues），任务模型。简单来说就是<strong>让多个消费者绑定到一个队列，共同消费队列中的消息</strong>。</p>
-<p><img src="img/image-20211214210223267-164190396195512.png" alt="image-20211214210223267"></p>
+<p><img src="http://hexo.superk.site/image-20211214210223267-164190396195512.png" alt="image-20211214210223267"></p>
 <hr>
 <p>当消息处理比较耗时的时候，可能生产消息的速度会远远大于消息的消费速度。长此以往，消息就会堆积越来越多，无法及时处理。</p>
 <p>此时就可以使用work 模型，多个消费者共同处理消息处理，速度就能大大提高了。</p>
@@ -356,7 +356,7 @@
 
 
 <h4 id="发布-订阅"><a href="#发布-订阅" class="headerlink" title="发布/订阅"></a>发布/订阅</h4><p>发布订阅的模型如图：</p>
-<p><img src="img/image-20220111202407212.png" alt="image-20220111202407212"></p>
+<p><img src="http://hexo.superk.site/image-20220111202407212.png" alt="image-20220111202407212"></p>
 <p>可以看到，在订阅模型中，多了一个exchange角色，而且过程略有变化：</p>
 <ul>
 <li>Publisher：生产者，也就是要发送消息的程序，但是不再发送到队列中，而是发给exchange（交换机）</li>
@@ -372,7 +372,7 @@
 <p><strong>Exchange（交换机）只负责转发消息，不具备存储消息的能力</strong>，因此如果没有任何队列与Exchange绑定，或者没有符合路由规则的队列，那么消息会丢失！</p>
 <h4 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h4><h5 id="Fanout"><a href="#Fanout" class="headerlink" title="Fanout"></a>Fanout</h5><p>Fanout，英文翻译是扇出，在MQ中叫广播更合适。</p>
 <p>exchange会将消息路由到每个绑定的队列</p>
-<p><img src="img/image-20220111202418852.png" alt="image-20220111202418852"></p>
+<p><img src="http://hexo.superk.site/image-20220111202418852.png" alt="image-20220111202418852"></p>
 <p>在广播模式下，消息发送流程是这样的：</p>
 <ul>
 <li>1）  可以有多个队列</li>
@@ -386,10 +386,10 @@
 <li>创建一个交换机 <code>itcast.fanout</code>，类型是<code>Fanout</code></li>
 <li>创建两个队列<code>fanout.queue1</code>和<code>fanout.queue2</code>，绑定到交换机<code>itcast.fanout</code></li>
 </ul>
-<p><img src="img/image-20220111202428450.png" alt="image-20220111202428450"></p>
+<p><img src="http://hexo.superk.site/image-20220111202428450.png" alt="image-20220111202428450"></p>
 <hr>
 <h6 id="声明队列和交换机"><a href="#声明队列和交换机" class="headerlink" title="声明队列和交换机"></a>声明队列和交换机</h6><p>Spring提供了一个接口Exchange，来表示所有不同类型的交换机：</p>
-<p><img src="img/image-20220111202433644.png" alt="image-20220111202433644"></p>
+<p><img src="http://hexo.superk.site/image-20220111202433644.png" alt="image-20220111202433644"></p>
 <p>在consumer（消费者）中创建一个类，声明队列和交换机：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.demo.mq.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.core.Binding;</span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.core.BindingBuilder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.core.FanoutExchange;</span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.core.Queue;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FanoutConfig</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 声明交换机</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Fanout类型交换机</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FanoutExchange <span class="title">fanoutExchange</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> FanoutExchange(<span class="string">&quot;itcast.fanout&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 第1个队列</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Queue <span class="title">fanoutQueue1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Queue(<span class="string">&quot;fanout.queue1&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 绑定队列和交换机</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Binding <span class="title">bindingQueue1</span><span class="params">(Queue fanoutQueue1, FanoutExchange fanoutExchange)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BindingBuilder.bind(fanoutQueue1).to(fanoutExchange);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 第2个队列</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Queue <span class="title">fanoutQueue2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Queue(<span class="string">&quot;fanout.queue2&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 绑定队列和交换机</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Binding <span class="title">bindingQueue2</span><span class="params">(Queue fanoutQueue2, FanoutExchange fanoutExchange)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BindingBuilder.bind(fanoutQueue2).to(fanoutExchange);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -419,7 +419,7 @@
 </ul>
 </blockquote>
 <h5 id="Direct"><a href="#Direct" class="headerlink" title="Direct"></a>Direct</h5><p>在<code>Fanout</code>模式中，一条消息，会被<strong>所有</strong>订阅的队列都消费。但是，在某些场景下，我们<strong>希望不同的消息被不同的队列消费。可以用到Direct类型的Exchange。</strong></p>
-<p><img src="img/image-20220111202446248.png" alt="image-20220111202446248"></p>
+<p><img src="http://hexo.superk.site/image-20220111202446248.png" alt="image-20220111202446248"></p>
 <p> 在<code>Direct</code>模型下：</p>
 <ul>
 <li>队列与交换机的绑定，不能是任意绑定了，而是要指定一个<code>RoutingKey</code>（路由key）</li>
@@ -435,7 +435,7 @@
 <li><p>在<code>publisher</code>中编写测试方法，向<code>itcast. direct</code>发送消息</p>
 </li>
 </ol>
-<p><img src="img/image-20220111202455137.png" alt="image-20220111202455137"></p>
+<p><img src="http://hexo.superk.site/image-20220111202455137.png" alt="image-20220111202455137"></p>
 <h6 id="基于注解声明队列和交换机"><a href="#基于注解声明队列和交换机" class="headerlink" title="基于注解声明队列和交换机"></a>基于注解声明队列和交换机</h6><p>基于<code>@Bean</code>的方式声明队列和交换机比较麻烦，Spring还提供了基于<strong>注解</strong>方式来声明。</p>
 <p>在<code>consumer</code>的<code>SpringRabbitListener</code>中添加两个消费者，同时基于注解来声明队列和交换机：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener(bindings = @QueueBinding(</span></span><br><span class="line"><span class="meta">    value = @Queue(name = &quot;direct.queue1&quot;),</span></span><br><span class="line"><span class="meta">    exchange = @Exchange(name = &quot;itcast.direct&quot;, type = ExchangeTypes.DIRECT),</span></span><br><span class="line"><span class="meta">    key = &#123;&quot;red&quot;, &quot;blue&quot;&#125;</span></span><br><span class="line"><span class="meta">))</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listenDirectQueue1</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;消费者接收到direct.queue1的消息：【&quot;</span> + msg + <span class="string">&quot;】&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RabbitListener(bindings = @QueueBinding(</span></span><br><span class="line"><span class="meta">    value = @Queue(name = &quot;direct.queue2&quot;),</span></span><br><span class="line"><span class="meta">    exchange = @Exchange(name = &quot;itcast.direct&quot;, type = ExchangeTypes.DIRECT),</span></span><br><span class="line"><span class="meta">    key = &#123;&quot;red&quot;, &quot;yellow&quot;&#125;</span></span><br><span class="line"><span class="meta">))</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listenDirectQueue2</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;消费者接收到direct.queue2的消息：【&quot;</span> + msg + <span class="string">&quot;】&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -471,7 +471,7 @@
 <p>​     </p>
 <p><strong>图示：</strong></p>
 <hr>
-<p><img src="img/image-20220111202515512.png" alt="image-20220111202515512"></p>
+<p><img src="http://hexo.superk.site/image-20220111202515512.png" alt="image-20220111202515512"></p>
 <hr>
 <p><strong>解释：</strong></p>
 <ul>
@@ -488,7 +488,7 @@
 <li><p>在<code>publisher</code>中编写测试方法，向itcast. topic发送消息</p>
 </li>
 </ol>
-<p><img src="img/image-20220111202523704.png" alt="image-20220111202523704"></p>
+<p><img src="http://hexo.superk.site/image-20220111202523704.png" alt="image-20220111202523704"></p>
 <h6 id="消息发送-4"><a href="#消息发送-4" class="headerlink" title="消息发送"></a>消息发送</h6><p>在<code>publisher</code>服务的<code>SpringAmqpTest</code>类中添加测试方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * topicExchange</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSendTopicExchange</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 交换机名称</span></span><br><span class="line">    String exchangeName = <span class="string">&quot;itcast.topic&quot;</span>;</span><br><span class="line">    <span class="comment">// 消息</span></span><br><span class="line">    String message = <span class="string">&quot;喜报！孙悟空大战哥斯拉，胜!&quot;</span>;</span><br><span class="line">    <span class="comment">// 发送消息</span></span><br><span class="line">    rabbitTemplate.convertAndSend(exchangeName, <span class="string">&quot;china.news&quot;</span>, message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -509,7 +509,7 @@
 </ul>
 </blockquote>
 <h5 id="消息转换器"><a href="#消息转换器" class="headerlink" title="消息转换器"></a>消息转换器</h5><p>之前说过，Spring会把你发送的消息<strong>序列化</strong>为字节发送给<code>MQ</code>，接收消息的时候，还会把字节<strong>反序列化</strong>为<code>Java</code>对象。</p>
-<p><img src="img/image-20220111202532020.png" alt="image-20220111202532020"></p>
+<p><img src="http://hexo.superk.site/image-20220111202532020.png" alt="image-20220111202532020"></p>
 <p>只不过，默认情况下Spring采用的序列化方式是<code>JDK</code>序列化。众所周知，<code>JDK</code>序列化存在下列问题：</p>
 <ul>
 <li>数据体积过大</li>
@@ -523,7 +523,7 @@
 
 <p>停止<code>consumer</code>服务</p>
 <p>发送消息后查看控制台：</p>
-<p><img src="img/image-20220111202539098.png" alt="image-20220111202539098"></p>
+<p><img src="http://hexo.superk.site/image-20220111202539098.png" alt="image-20220111202539098"></p>
 <h6 id="配置JSON转换器"><a href="#配置JSON转换器" class="headerlink" title="配置JSON转换器"></a>配置JSON转换器</h6><p>显然，<code>JDK</code>序列化方式并不合适。我们希望消息体的体积更小、可读性更高，因此可以使用<code>JSON</code>方式来做序列化和反序列化。</p>
 <p>在<code>publisher</code>和<code>consumer</code>两个服务中都引入依赖：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.dataformat<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-dataformat-xml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -596,7 +596,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-01-11 20:19:01 / 修改时间：20:19:59" itemprop="dateCreated datePublished" datetime="2022-01-11T20:19:01+08:00">2022-01-11</time>
+              <time title="创建时间：2022-01-11 20:19:01 / 修改时间：20:31:07" itemprop="dateCreated datePublished" datetime="2022-01-11T20:19:01+08:00">2022-01-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -641,16 +641,16 @@
 
 <p><strong>3. 寻找等价关系</strong></p>
 <p>这个的等价关系不像 n 是个数值那样，比较容易寻找。但是它的等价条件中，一定是范围不断在缩小，对于链表来说，就是链表的节点个数不断在变小，所以，如果实在找不出，就先对 reverseList(head.next) 递归走一遍，看看结果是咋样的。例如链表节点如下</p>
-<p><img src="img/v2-ef0963bd04236c8ecc9f1fb7d754287d_720w.jpg" alt="img"></p>
+<p><img src="http://hexo.superk.site/v2-ef0963bd04236c8ecc9f1fb7d754287d_720w.jpg" alt="img"></p>
 <p>我们就缩小范围，先对 2-&gt;3-&gt;4递归下试试，即代码如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Node reverseList(Node head)&#123;</span><br><span class="line">    if(head == null || head.next == null)&#123;</span><br><span class="line">        return head;</span><br><span class="line">    &#125;</span><br><span class="line">    // 我们先把递归的结果保存起来，先不返回，因为我们还不清楚这样递归是对还是错。，</span><br><span class="line">    Node newList = reverseList(head.next);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们在第一步的时候，就已经定义了 reverseLis t函数的功能可以把一个单链表反转，所以，我们对 2-&gt;3-&gt;4反转之后的结果应该是这样：</p>
-<p><img src="img/v2-eb7872cdf9fc070bd97c36810586b526_720w.jpg" alt="img"></p>
+<p><img src="http://hexo.superk.site/v2-eb7872cdf9fc070bd97c36810586b526_720w.jpg" alt="img"></p>
 <p>我们把 2-&gt;3-&gt;4 递归成 4-&gt;3-&gt;2。不过，1 这个节点我们并没有去碰它，所以 1 的 next 节点仍然是连接这 2。</p>
 <p>接下来呢？该怎么办？</p>
 <p>其实，接下来就简单了，我们接下来只需要<strong>把节点 2 的 next 指向 1，然后把 1 的 next 指向 null,不就行了？</strong>，即通过改变 newList 链表之后的结果如下：</p>
-<p><img src="img/v2-30fe780dc9fbcd2a0cd5ca351083c372_r.jpg" alt="preview"></p>
+<p><img src="http://hexo.superk.site/v2-30fe780dc9fbcd2a0cd5ca351083c372_r.jpg" alt="preview"></p>
 <p>也就是说，reverseList(head) 等价于  <strong>reverseList(head.next)</strong> + <strong>改变一下1，2两个节点的指向</strong>。好了，等价关系找出来了，代码如下(有详细的解释)：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//用递归的方法反转链表</span><br><span class="line">public static Node reverseList2(Node head)&#123;</span><br><span class="line">    // 1.递归结束条件</span><br><span class="line">    if (head == null || head.next == null) &#123;</span><br><span class="line">             return head;</span><br><span class="line">         &#125;</span><br><span class="line">         // 递归反转 子链表</span><br><span class="line">         Node newList = reverseList2(head.next);</span><br><span class="line">         // 改变 1，2节点的指向。</span><br><span class="line">         // 通过 head.next获取节点2</span><br><span class="line">         Node t1  = head.next;</span><br><span class="line">         // 让 2 的 next 指向 2</span><br><span class="line">         t1.next = head;</span><br><span class="line">         // 1 的 next 指向 null.</span><br><span class="line">        head.next = null;</span><br><span class="line">        // 把调整之后的链表返回。</span><br><span class="line">        return newList;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
